@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/models/movie.dart';
+import 'package:pictionaty_app/pages/pregunta_pages.dart';
+import 'package:pictionaty_app/providers/equipo_provider.dart';
 import 'package:pictionaty_app/providers/movies_provider.dart';
 import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:pictionaty_app/widgets/main_app_bar.dart';
@@ -19,7 +20,7 @@ class PeliculaPage extends StatelessWidget {
     final mainAppBar = MimoAppbar();
     final moviesProvider = Provider.of<MoviesProvider>(context);
     moviesProvider.getOnDisplayMovies();
-    final Movie movie = moviesProvider.getPelicula();
+    final Movie movie = moviesProvider.getPeliculas();
     bool isTap = false;
     return Scaffold(
       appBar: mainAppBar.getWidget(context),
@@ -45,14 +46,7 @@ class PeliculaPage extends StatelessWidget {
                 ),
                 width: viewport.getWidth() * 0.5,
                 height: viewport.getHeight() * 0.5,
-                child: GestureDetector(
-                  child: ClipRRect(
-                    child: FadeInImage(
-                        placeholder: const AssetImage('assets/signo.png'),
-                        image: NetworkImage(movie.fullPosterImg),
-                        fit: BoxFit.fill),
-                  ),
-                ),
+                child: Poster(movie: movie),
               ),
             ),
             SizedBox(
@@ -106,7 +100,6 @@ class PeliculaPage extends StatelessWidget {
                   ),
                   child: Contador(
                     isTap: isTap,
-                    titulo: movie.title,
                   )),
             )
           ],
@@ -116,44 +109,60 @@ class PeliculaPage extends StatelessWidget {
   }
 }
 
-class Contador extends StatefulWidget {
-  const Contador({Key? key, required this.isTap, required this.titulo})
-      : super(key: key);
+class Poster extends StatelessWidget {
+  const Poster({
+    Key? key,
+    required this.movie,
+  }) : super(key: key);
 
-  final bool isTap;
-  final String titulo;
+  final Movie movie;
 
   @override
-  State<Contador> createState() => _ContadorState(isTap: isTap, titulo: titulo);
+  Widget build(BuildContext context) {
+    if (movie.title.isEmpty) {
+      return ClipRRect(
+        child: FadeInImage(
+            placeholder: const AssetImage('assets/signo.png'),
+            image: NetworkImage(movie.fullPosterImg),
+            fit: BoxFit.fill),
+      );
+    } else {
+      return const Image(
+        image: AssetImage('assets/signo.png'),
+      );
+    }
+  }
+}
+
+class Contador extends StatefulWidget {
+  const Contador({Key? key, required this.isTap}) : super(key: key);
+
+  final bool isTap;
+
+  @override
+  // ignore: no_logic_in_create_state
+  State<Contador> createState() => _ContadorState(
+        isTap: isTap,
+      );
 }
 
 class _ContadorState extends State<Contador> {
-  _ContadorState({required this.isTap, required this.titulo});
+  _ContadorState({
+    required this.isTap,
+  });
 
   bool isTap;
-  String titulo;
+
   @override
   Widget build(BuildContext context) {
     Widget result = Column();
 
     if (isTap) {
-      result = CountdownTimer(
-        endTime: DateTime.now().millisecondsSinceEpoch + 1000 * 20,
-        textStyle: TextStyle(
-          color: mimodoTheme.background,
-          fontSize: 30,
-          fontFamily: mimodoTheme.fonts.title,
-        ),
-        onEnd: () {
-          setState(() {
-            isTap = false;
-          });
-        },
-      );
+      result = const Countdawn();
     } else {
       result = TextButton(
         child: Text(
-          "Listo",
+          "Comenzar",
           style: TextStyle(
             color: mimodoTheme.background,
             fontSize: 30,
@@ -172,15 +181,16 @@ class _ContadorState extends State<Contador> {
 }
 
 class Countdawn extends StatelessWidget {
-  const Countdawn({Key? key, required this.titulo}) : super(key: key);
-  final String titulo;
+  const Countdawn({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final viewport = Provider.of<ViewportProvider>(context);
+    final equipoProvider = Provider.of<EquipoProvider>(context);
     return Container(
       alignment: Alignment.center,
       child: Countdown(
-        seconds: 2,
+        seconds: equipoProvider.getTiempoJuego(),
         build: (BuildContext context, double time) => Text(
           time.toString(),
           style: TextStyle(
@@ -191,76 +201,7 @@ class Countdawn extends StatelessWidget {
         ),
         interval: const Duration(milliseconds: 100),
         onFinished: () {
-          showDialog(
-              context: context,
-              builder: (_) => AlertDialog(
-                  backgroundColor: mimodoTheme.background,
-                  title: Text(
-                    'Fin de la ronda',
-                    style: TextStyle(
-                      color: mimodoTheme.primary, //mimodoTheme.background,
-                      fontSize: 30,
-                      fontFamily: mimodoTheme.fonts.title,
-                    ),
-                  ),
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'La pelicula era $titulo. ¿Acertaron?',
-                        style: TextStyle(
-                          color: mimodoTheme.primary,
-                          fontSize: 20,
-                          fontFamily: mimodoTheme.fonts.title,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            width: viewport.getWidth() * 0.12,
-                            height: viewport.getHeight() * 0.08,
-                            decoration: BoxDecoration(
-                              color: mimodoTheme.primary,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: TextButton(
-                              child: Text(
-                                "Si",
-                                style: TextStyle(
-                                  color: mimodoTheme.background,
-                                  fontSize: 20,
-                                  fontFamily: mimodoTheme.fonts.title,
-                                ),
-                              ),
-                              onPressed: () {},
-                            ),
-                          ),
-                          SizedBox(
-                            width: viewport.getWidth() * 0.05,
-                          ),
-                          Container(
-                            width: viewport.getWidth() * 0.12,
-                            height: viewport.getHeight() * 0.08,
-                            decoration: BoxDecoration(
-                              color: mimodoTheme.primary,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: TextButton(
-                              child: Text(
-                                "No",
-                                style: TextStyle(
-                                  color: mimodoTheme.background,
-                                  fontSize: 20,
-                                  fontFamily: mimodoTheme.fonts.title,
-                                ),
-                              ),
-                              onPressed: () {},
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  )));
+          Navigator.pushNamed(context, PreguntaPage.routeName);
         },
       ),
     );

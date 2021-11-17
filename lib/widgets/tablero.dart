@@ -373,7 +373,7 @@ class Tablero extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          equipoProvider.traermeEquipo(1),
+                          equipoProvider.traermeEquipo(2),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 30,

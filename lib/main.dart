@@ -4,6 +4,7 @@ import 'package:pictionaty_app/pages/config_juego.dart';
 import 'package:pictionaty_app/pages/genero_page.dart';
 import 'package:pictionaty_app/pages/home_page.dart';
 import 'package:pictionaty_app/pages/pelicula_page.dart';
+import 'package:pictionaty_app/pages/pregunta_pages.dart';
 import 'package:pictionaty_app/pages/ruleta_generos.dart';
 import 'package:pictionaty_app/pages/tabla_pociciones_page.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
@@ -52,7 +53,7 @@ class MimodoApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Mimo-do App',
-      initialRoute: 'ruleta',
+      initialRoute: 'home',
       routes: {
         'home': (_) => const HomePage(),
         'genero': (_) => const GenerosPage(),
@@ -61,6 +62,7 @@ class MimodoApp extends StatelessWidget {
         'tablon': (_) => const TablaPosicionesPage(),
         'ruleta': (_) => const RuletaDeGeneros(),
         'pelicula': (_) => const PeliculaPage(),
+        'pregunta': (_) => const PreguntaPage(),
       },
     );
   }
