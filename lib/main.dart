@@ -7,6 +7,7 @@ import 'package:pictionaty_app/pages/pelicula_page.dart';
 import 'package:pictionaty_app/pages/ruleta_generos.dart';
 import 'package:pictionaty_app/pages/tabla_pociciones_page.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
+import 'package:pictionaty_app/providers/movies_provider.dart';
 import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +33,11 @@ class AppState extends StatelessWidget {
             context: context,
             appBarHeight: 0.1,
           ),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MoviesProvider(),
+          lazy: false,
+        ),
       ],
       child: const MimodoApp(),
     );

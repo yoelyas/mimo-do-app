@@ -32,14 +32,14 @@ class Buttonsbody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map<String, IconData> generos = {
-      "C/ficción": Icons.smart_toy_outlined,
+      "Acción": Icons.local_fire_department,
+      "Aventura": Icons.hiking,
       "Comedia": Icons.festival_rounded,
       "Drama": Icons.theater_comedy_outlined,
-      "Aventura": Icons.hiking,
-      "Terror": Icons.carpenter_rounded,
-      "Acción": Icons.local_fire_department,
       "Fantasía": Icons.auto_fix_high,
-      "Romance": Icons.favorite
+      "Terror": Icons.carpenter_rounded,
+      "Romance": Icons.favorite,
+      "C. ficción": Icons.smart_toy_outlined,
     };
     List<Widget> buttoms = [];
     List<Widget> result = [];

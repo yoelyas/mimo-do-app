@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   card_swiper: ^1.0.4
   provider: ^6.0.0
+  http: ^0.13.4
+  timer_count_down: ^2.2.0
+  dependencies:
+  flutter_countdown_timer: ^4.1.0
 
 dev_dependencies:
   flutter_test:

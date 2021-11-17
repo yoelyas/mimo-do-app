@@ -29,14 +29,14 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
   bool isStopping = false;
 
   List<String> generos = [
-    'C. ficción',
-    'Comedia',
-    'Drama',
-    'Aventura',
-    'Terror',
-    'Acción',
-    'Fontacía',
-    'Romance'
+    "Acción",
+    "Aventura",
+    "Comedia",
+    "Drama",
+    "Fantasía",
+    "Terror",
+    "Romance",
+    "C. ficción",
   ];
 
   int offset = 0;
@@ -137,7 +137,6 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
   @override
   Widget build(BuildContext context) {
     final viewport = Provider.of<ViewportProvider>(context);
-    final equipoProvider = Provider.of<EquipoProvider>(context);
     viewport.setContext(context);
     ancho = viewport.getCalcWidth(0.75);
     alto = viewport.getCalcHeight(0.5);
@@ -228,7 +227,6 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
                   ),
                   onPressed: () {
                     if (!isRunningAnimation) {
-                      print(equipoProvider.getGeneroElejido());
                       Navigator.pushNamed(context, PeliculaPage.routeName);
                     } else //(!isStopping)
                     {
