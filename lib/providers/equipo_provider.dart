@@ -5,8 +5,8 @@ class EquipoProvider extends ChangeNotifier {
   final TeamCollection _teamCollection = TeamCollection();
 
   int _cantEquipos = 2;
-  Map<String, int> _equipos = {};
-  int _tiempoJuego = 120;
+  final Map<String, int> _equipos = {};
+  int _tiempoJuego = 1;
   int _rondas = 10;
   String _generoElejido = '';
 
@@ -35,8 +35,8 @@ class EquipoProvider extends ChangeNotifier {
       team.getPoints();
     }
 
-    _teamCollection.map((e) {
-      e.getName();
+    _teamCollection.map((equipo) {
+      equipo.getName();
     });
   }
 
@@ -55,29 +55,30 @@ class EquipoProvider extends ChangeNotifier {
     });
   }
 
+  getEquipos() {
+    return _equipos;
+  }
+
   String traermeEquipo(int equipo) {
-    int count = 0;
+    int count = 1;
     String name = "";
 
     _equipos.forEach((key, value) {
       // ignore: unrelated_type_equality_checks
-      count++;
-
       if (count == equipo) {
         name = key;
       }
+      count++;
     });
 
     return name;
   }
 
-  setEquipo(Map<String, int> equipoFinal) {
-    _equipos = equipoFinal;
-  }
-
-  setPuntosEquipo(String equipo, int puntos) {
+  setPuntosEquipo(
+    String equipo,
+  ) {
     if (_equipos.containsKey(equipo)) {
-      _equipos[equipo] = puntos;
+      _equipos[equipo] = _equipos[equipo]! + 2;
     }
   }
 
@@ -88,6 +89,7 @@ class EquipoProvider extends ChangeNotifier {
     _equipos.forEach((key, value) {
       // ignore: unrelated_type_equality_checks
       count++;
+      //print(value);
 
       if (count == equipo) {
         puntuacion = value;

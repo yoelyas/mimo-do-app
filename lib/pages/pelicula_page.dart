@@ -4,6 +4,7 @@ import 'package:pictionaty_app/models/movie.dart';
 import 'package:pictionaty_app/pages/pregunta_pages.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
 import 'package:pictionaty_app/providers/movies_provider.dart';
+import 'package:pictionaty_app/providers/state_provider.dart';
 import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:pictionaty_app/widgets/main_app_bar.dart';
 import 'package:provider/provider.dart';
@@ -19,9 +20,18 @@ class PeliculaPage extends StatelessWidget {
     final viewport = Provider.of<ViewportProvider>(context);
     final mainAppBar = MimoAppbar();
     final moviesProvider = Provider.of<MoviesProvider>(context);
-    moviesProvider.getOnDisplayMovies();
-    final Movie movie = moviesProvider.getPeliculas();
-    bool isTap = false;
+
+    final Movie movie = moviesProvider.getPeliculaActual();
+
+    if (moviesProvider.getPeliculas().isEmpty) {
+      return Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: const Center(child: CircularProgressIndicator()),
+        color: mimodoTheme.background,
+      );
+    }
+
     return Scaffold(
       appBar: mainAppBar.getWidget(context),
       body: Container(
@@ -30,44 +40,11 @@ class PeliculaPage extends StatelessWidget {
         color: mimodoTheme.background,
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: viewport.getHeight() * 0.05),
-              child: Container(
-                decoration: BoxDecoration(
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(0, 0),
-                        blurRadius: 10,
-                        spreadRadius: 3)
-                  ],
-                  //borderRadius: BorderRadius.circular(50),
-                  border: Border.all(width: 10, color: Colors.black),
-                ),
-                width: viewport.getWidth() * 0.5,
-                height: viewport.getHeight() * 0.5,
-                child: Poster(movie: movie),
-              ),
+            Poster(
+              movie: movie,
             ),
             SizedBox(
               height: viewport.getHeight() * 0.01,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(3.0),
-              child: Container(
-                width: double.infinity,
-                alignment: Alignment.topCenter,
-                height: 80,
-                child: Text(
-                  movie.title,
-                  maxLines: 2,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontFamily: mimodoTheme.fonts.title,
-                  ),
-                ),
-              ),
             ),
             Container(
               width: viewport.getWidth() * 0.12,
@@ -98,9 +75,7 @@ class PeliculaPage extends StatelessWidget {
                     color: mimodoTheme.primary,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Contador(
-                    isTap: isTap,
-                  )),
+                  child: const Contador()),
             )
           ],
         ),
@@ -109,8 +84,8 @@ class PeliculaPage extends StatelessWidget {
   }
 }
 
-class Poster extends StatelessWidget {
-  const Poster({
+class TituloPelicula extends StatelessWidget {
+  const TituloPelicula({
     Key? key,
     required this.movie,
   }) : super(key: key);
@@ -119,45 +94,135 @@ class Poster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (movie.title.isEmpty) {
-      return ClipRRect(
-        child: FadeInImage(
-            placeholder: const AssetImage('assets/signo.png'),
-            image: NetworkImage(movie.fullPosterImg),
-            fit: BoxFit.fill),
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: Container(
+        width: double.infinity,
+        alignment: Alignment.topCenter,
+        height: 80,
+        child: Text(
+          movie.title,
+          maxLines: 2,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontFamily: mimodoTheme.fonts.title,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Poster extends StatefulWidget {
+  const Poster({
+    Key? key,
+    required this.movie,
+  }) : super(key: key);
+
+  final Movie movie;
+
+  @override
+  State<Poster> createState() => _PosterState();
+}
+
+class _PosterState extends State<Poster> {
+  @override
+  Widget build(BuildContext context) {
+    final stateProvider = Provider.of<StateProvider>(context);
+    final moviesProvider = Provider.of<MoviesProvider>(context);
+    final viewport = Provider.of<ViewportProvider>(context);
+
+    final Movie movie = moviesProvider.getPeliculaActual();
+
+    if (!stateProvider.getIsTap()) {
+      return Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: viewport.getHeight() * 0.05),
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: const [
+                  BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(0, 0),
+                      blurRadius: 10,
+                      spreadRadius: 3)
+                ],
+                //borderRadius: BorderRadius.circular(50),
+                border: Border.all(width: 10, color: Colors.black),
+              ),
+              width: viewport.getWidth() * 0.5,
+              height: viewport.getHeight() * 0.5,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    stateProvider.setSoftIsTap(true);
+                  });
+                },
+                child: ClipRRect(
+                  child: FadeInImage(
+                      placeholder: const AssetImage('assets/signo.png'),
+                      image: NetworkImage(widget.movie.fullPosterImg),
+                      fit: BoxFit.fill),
+                ),
+              ),
+            ),
+          ),
+          TituloPelicula(
+            movie: movie,
+          )
+        ],
       );
     } else {
-      return const Image(
-        image: AssetImage('assets/signo.png'),
+      return Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: viewport.getHeight() * 0.05),
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: const [
+                  BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(0, 0),
+                      blurRadius: 10,
+                      spreadRadius: 3)
+                ],
+                //borderRadius: BorderRadius.circular(50),
+                border: Border.all(width: 10, color: Colors.black),
+              ),
+              width: viewport.getWidth() * 0.5,
+              height: viewport.getHeight() * 0.5,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    stateProvider.setSoftIsTap(false);
+                  });
+                },
+                child: const Image(
+                  image: AssetImage('assets/signo.png'),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 80,
+          )
+        ],
       );
     }
   }
 }
 
-class Contador extends StatefulWidget {
-  const Contador({Key? key, required this.isTap}) : super(key: key);
-
-  final bool isTap;
-
-  @override
-  // ignore: no_logic_in_create_state
-  State<Contador> createState() => _ContadorState(
-        isTap: isTap,
-      );
-}
-
-class _ContadorState extends State<Contador> {
-  _ContadorState({
-    required this.isTap,
-  });
-
-  bool isTap;
+class Contador extends StatelessWidget {
+  const Contador({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final stateProvider = Provider.of<StateProvider>(context);
     Widget result = Column();
 
-    if (isTap) {
+    if (stateProvider.getIsTap()) {
       result = const Countdawn();
     } else {
       result = TextButton(
@@ -170,9 +235,7 @@ class _ContadorState extends State<Contador> {
           ),
         ),
         onPressed: () {
-          setState(() {
-            isTap = true;
-          });
+          stateProvider.setIsTap(true);
         },
       );
     }
@@ -186,7 +249,9 @@ class Countdawn extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final stateProvider = Provider.of<StateProvider>(context);
     final equipoProvider = Provider.of<EquipoProvider>(context);
+
     return Container(
       alignment: Alignment.center,
       child: Countdown(
@@ -201,6 +266,7 @@ class Countdawn extends StatelessWidget {
         ),
         interval: const Duration(milliseconds: 100),
         onFinished: () {
+          stateProvider.setIsTap(false);
           Navigator.pushNamed(context, PreguntaPage.routeName);
         },
       ),

@@ -23,15 +23,25 @@ const Map<String, Map<String, dynamic>> APP_CONFIG = {
   },
 };
 
-const Map<String, int> genre = {
-  "Acción": 28,
-  "Aventura": 12,
-  "Comedia": 35,
-  "Drama": 18,
-  "Fantasía": 14,
-  "Terror": 27,
-  "Romance": 10749,
-  "C. ficción": 878,
+const Map<String, String> genre = {
+  "Acción": '28',
+  "Aventura": '12',
+  "Comedia": '35',
+  "Drama": '18',
+  "Fantasía": '14',
+  "Terror": '27',
+  "Romance": '10749',
+  "C. ficción": '878',
 };
 
 int volumen = 0;
+
+getIdGenero(String genero) {
+  String id = '';
+  genre.forEach((key, value) {
+    if (genero == key) {
+      id = value;
+    }
+  });
+  return id;
+}

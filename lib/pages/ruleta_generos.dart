@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:pictionaty_app/const/config.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/pages/pelicula_page.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
+import 'package:pictionaty_app/providers/movies_provider.dart';
 import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:pictionaty_app/widgets/drawer_bar.dart';
 import 'package:pictionaty_app/widgets/main_app_bar.dart';
@@ -137,6 +139,8 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
   @override
   Widget build(BuildContext context) {
     final viewport = Provider.of<ViewportProvider>(context);
+    final moviesProvider = Provider.of<MoviesProvider>(context);
+    final equipoProvider = Provider.of<EquipoProvider>(context);
     viewport.setContext(context);
     ancho = viewport.getCalcWidth(0.75);
     alto = viewport.getCalcHeight(0.5);
@@ -227,6 +231,8 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
                   ),
                   onPressed: () {
                     if (!isRunningAnimation) {
+                      moviesProvider.getOnDisplayMovies(
+                          getIdGenero(equipoProvider.getGeneroElejido()));
                       Navigator.pushNamed(context, PeliculaPage.routeName);
                     } else //(!isStopping)
                     {

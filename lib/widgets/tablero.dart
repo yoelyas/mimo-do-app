@@ -36,7 +36,7 @@ class Tablero extends StatelessWidget {
                 width: 175,
                 height: 150,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black),
+                  border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
                 child: Column(
                   children: [
@@ -74,7 +74,7 @@ class Tablero extends StatelessWidget {
                 width: 175,
                 height: 150,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black),
+                  border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
                 child: Column(
                   children: [
@@ -116,7 +116,7 @@ class Tablero extends StatelessWidget {
                 width: 175,
                 height: 150,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black),
+                  border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
                 child: Column(
                   children: [
@@ -154,7 +154,7 @@ class Tablero extends StatelessWidget {
                 width: 175,
                 height: 150,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black),
+                  border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
                 child: Column(
                   children: [
@@ -203,7 +203,7 @@ class Tablero extends StatelessWidget {
                 width: 175,
                 height: 150,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black),
+                  border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
                 child: Column(
                   children: [
@@ -241,7 +241,7 @@ class Tablero extends StatelessWidget {
                 width: 175,
                 height: 150,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black),
+                  border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
                 child: Column(
                   children: [
@@ -281,7 +281,7 @@ class Tablero extends StatelessWidget {
             width: 350,
             height: 150,
             decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Colors.black),
+              border: Border.all(width: 1, color: mimodoTheme.primary),
             ),
             child: Column(
               children: [
@@ -317,6 +317,9 @@ class Tablero extends StatelessWidget {
   }
 
   Column dosEquipos(EquipoProvider equipoProvider) {
+    print(
+      equipoProvider.traermePuntuacionEquipo(0).toString(),
+    );
     return Column(
       children: [
         Row(
@@ -325,7 +328,7 @@ class Tablero extends StatelessWidget {
                 width: 175,
                 height: 300,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black),
+                  border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
                 child: Column(
                   children: [
@@ -349,7 +352,7 @@ class Tablero extends StatelessWidget {
                       height: 244,
                       child: Center(
                         child: Text(
-                          equipoProvider.traermePuntuacionEquipo(1).toString(),
+                          equipoProvider.traermePuntuacionEquipo(0).toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 45,
@@ -364,7 +367,7 @@ class Tablero extends StatelessWidget {
                 width: 175,
                 height: 300,
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black),
+                  border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
                 child: Column(
                   children: [

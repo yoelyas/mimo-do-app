@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/pages/tabla_pociciones_page.dart';
+import 'package:pictionaty_app/providers/equipo_provider.dart';
 import 'package:pictionaty_app/providers/movies_provider.dart';
 import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:pictionaty_app/widgets/main_app_bar.dart';
@@ -14,6 +15,8 @@ class PreguntaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewport = Provider.of<ViewportProvider>(context);
     final moviesProvider = Provider.of<MoviesProvider>(context);
+    final equipoProvider = Provider.of<EquipoProvider>(context);
+
     final mainAppBar = MimoAppbar();
     return Scaffold(
         appBar: mainAppBar.getWidget(context),
@@ -66,7 +69,7 @@ class PreguntaPage extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                    top: viewport.getHeight() * 0.04,
+                    top: viewport.getHeight() * 0.02,
                     bottom: viewport.getHeight() * 0.04),
                 child: Text(
                   'La pelicula era ${moviesProvider.getPeliculaActual().title} ¿Acertaron?',
@@ -99,13 +102,16 @@ class PreguntaPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
+                        equipoProvider
+                            .setPuntosEquipo(equipoProvider.traermeEquipo(1));
+                        //print(equipoProvider.getEquipos());
                         Navigator.pushNamed(
                             context, TablaPosicionesPage.routeName);
                       },
                     ),
                   ),
                   SizedBox(
-                    width: viewport.getWidth() * 0.05,
+                    width: viewport.getWidth() * 0.1,
                   ),
                   Container(
                     width: viewport.getWidth() * 0.12,

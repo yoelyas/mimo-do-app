@@ -13,6 +13,7 @@ import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/form_provider.dart';
+import 'providers/state_provider.dart';
 
 void main() => runApp(const AppState());
 
@@ -38,6 +39,9 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => MoviesProvider(),
           lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => StateProvider(),
         ),
       ],
       child: const MimodoApp(),
