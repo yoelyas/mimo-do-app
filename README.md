@@ -21,31 +21,52 @@ Crear archivo en `lib/const/config.dart`.
 
 Ejemplo de `config.dart`
 ```dart
-// import 'package:flutter/material.dart';
+import 'dart:math';
 
-// ignore: constant_identifier_names
-const Map<String, Map<String, dynamic>> APP_CONFIG = {
-  "appBar": {
-    "logo": "assets/logo_mimodo.png",
-    "logo-gris": "assets/fondo_mimodo.png",
-  },
-  "drawer": {
-    "avatar": "assets/500x300.png",
-  },
-  "gridBreakpoints": {
-    "xs": 320.0, //*1
-    "sm": 425.0,
-    "md": 768.0, // *1.2
-    "lg": 1024.0,
-    "xl": 1200.0,
-    //320
-    // <= 425 es smallScreen
-    // <= 768 es mediumScreen
-    // <= 1200 es largeScreen
-    // > 1200 es xLargeScreen
-  },
-};
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:pictionaty_app/models/movie.dart';
+import 'package:pictionaty_app/models/peliculas_responce.dart';
 
-int volumen = 0;
+class MoviesProvider extends ChangeNotifier {
+  final Random _random = Random();
+  final String _apikey = //Clave de la API de The Movie Database;
+  final String _url = 'api.themoviedb.org';
+  final String _language = 'es-ES';
+  List<Movie> _movies = [];
+  Movie _movie = Movie(title: '');
+
+  /*MoviesProvider() {
+    getOnDisplayMovies();
+  }*/
+
+  getOnDisplayMovies(String withGenres) async {
+    var url = Uri.https(_url, '3/movie/popular', {
+      'api_key': _apikey,
+      'language': _language,
+      'page': (_random.nextInt(20) + 1).toString(),
+      'with_genres': withGenres,
+    });
+    final responce = await http.get(url);
+    final popularResponce = PopularResponce.fromJson(responce.body);
+    _movies = popularResponce.results;
+    _movie = _movies[_random.nextInt(_movies.length)];
+    notifyListeners();
+  }
+
+  List<Movie> getPeliculas() {
+    return _movies;
+  }
+
+  Movie getPeliculaActual() {
+    return _movie;
+  }
+
+  recargar() {
+    _movie = _movies[_random.nextInt(_movies.length)];
+    notifyListeners();
+  }
+}
+
 
 ```
