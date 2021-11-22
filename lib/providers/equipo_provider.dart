@@ -7,8 +7,20 @@ class EquipoProvider extends ChangeNotifier {
   int _cantEquipos = 2;
   final Map<String, int> _equipos = {};
   int _tiempoJuego = 1;
-  int _rondas = 10;
+  int _rondas = 2;
   String _generoElejido = '';
+  int _rondaActual = 0;
+
+  int getRondaActual() => _rondaActual;
+
+  setRondaActual() {
+    if (getRondaActual() < _cantEquipos - 1) {
+      _rondaActual++;
+    } else {
+      setRonda(getRonda() - 1);
+      _rondaActual = 0;
+    }
+  }
 
   String getGeneroElejido() => _generoElejido;
 
@@ -60,7 +72,7 @@ class EquipoProvider extends ChangeNotifier {
   }
 
   String traermeEquipo(int equipo) {
-    int count = 1;
+    int count = 0;
     String name = "";
 
     _equipos.forEach((key, value) {
@@ -70,7 +82,6 @@ class EquipoProvider extends ChangeNotifier {
       }
       count++;
     });
-
     return name;
   }
 
@@ -82,20 +93,9 @@ class EquipoProvider extends ChangeNotifier {
     }
   }
 
-  traermePuntuacionEquipo(int equipo) {
-    int count = 0;
-    int puntuacion = 0;
-
-    _equipos.forEach((key, value) {
-      // ignore: unrelated_type_equality_checks
-      count++;
-      //print(value);
-
-      if (count == equipo) {
-        puntuacion = value;
-      }
-    });
-
-    return puntuacion;
+  traermePuntuacionEquipo(String equipo) {
+    if (_equipos.containsKey(equipo)) {
+      return _equipos[equipo];
+    }
   }
 }

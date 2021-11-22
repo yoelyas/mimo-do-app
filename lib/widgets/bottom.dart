@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pictionaty_app/const/config.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/pages/config_equipos.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
@@ -8,9 +7,11 @@ import 'package:provider/provider.dart';
 //crea el boton de sucursal
 class Bottom extends StatelessWidget {
   final String text;
+  final String imagen;
   // ignore: use_key_in_widget_constructors
   const Bottom({
     required this.text,
+    required this.imagen,
   });
 
   @override
@@ -23,7 +24,7 @@ class Bottom extends StatelessWidget {
           children: [
             Image(
               fit: BoxFit.fill,
-              image: AssetImage(APP_CONFIG['drawer']!['avatar']),
+              image: AssetImage(imagen),
               height: 50,
               width: 70,
             ),

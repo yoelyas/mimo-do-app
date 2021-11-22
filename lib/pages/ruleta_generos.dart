@@ -145,6 +145,13 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
     ancho = viewport.getCalcWidth(0.75);
     alto = viewport.getCalcHeight(0.5);
     final mainAppBar = MimoAppbar();
+    IconData buttom = Icons.play_arrow;
+    if (!isRunningAnimation) {
+      buttom = Icons.play_arrow;
+    } else {
+      buttom = Icons.pause;
+    }
+
     return Scaffold(
       appBar: mainAppBar.getWidget(context),
       drawer: SideBarMenu(
@@ -203,7 +210,7 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
                     }
                   },
                   child: Icon(
-                    Icons.replay_outlined,
+                    buttom,
                     color: mimodoTheme.background,
                     size: 20,
                   )),

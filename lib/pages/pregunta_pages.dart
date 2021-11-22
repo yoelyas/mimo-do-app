@@ -101,10 +101,15 @@ class PreguntaPage extends StatelessWidget {
                           fontFamily: mimodoTheme.fonts.title,
                         ),
                       ),
+                      //como la ronda actual inicia en 0 se le suma 1
+
                       onPressed: () {
-                        equipoProvider
-                            .setPuntosEquipo(equipoProvider.traermeEquipo(1));
-                        //print(equipoProvider.getEquipos());
+                        print('Ronda: ${equipoProvider.getRondaActual()}');
+
+                        equipoProvider.setPuntosEquipo(equipoProvider
+                            .traermeEquipo(equipoProvider.getRondaActual()));
+                        equipoProvider.setRondaActual();
+
                         Navigator.pushNamed(
                             context, TablaPosicionesPage.routeName);
                       },
@@ -130,6 +135,7 @@ class PreguntaPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
+                        equipoProvider.setRondaActual();
                         Navigator.pushNamed(
                             context, TablaPosicionesPage.routeName);
                       },

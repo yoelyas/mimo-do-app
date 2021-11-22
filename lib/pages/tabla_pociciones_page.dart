@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/theme.dart';
+import 'package:pictionaty_app/pages/home_page.dart';
 import 'package:pictionaty_app/pages/ruleta_generos.dart';
+import 'package:pictionaty_app/providers/equipo_provider.dart';
 import 'package:pictionaty_app/widgets/drawer_bar.dart';
 import 'package:pictionaty_app/widgets/main_app_bar.dart';
 import 'package:pictionaty_app/widgets/tablero.dart';
+import 'package:provider/provider.dart';
 
 class TablaPosicionesPage extends StatelessWidget {
   static const String routeName = 'tablon';
@@ -11,7 +14,14 @@ class TablaPosicionesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final equipoProvider = Provider.of<EquipoProvider>(context);
     final mainAppBar = MimoAppbar();
+    String textButtom = "Listo";
+
+    if (equipoProvider.getRonda() == 0) {
+      textButtom = 'Nueva partida';
+    }
+
     return Scaffold(
       appBar: mainAppBar.getWidget(context),
       drawer: SideBarMenu(
@@ -71,7 +81,7 @@ class TablaPosicionesPage extends StatelessWidget {
                     ),
                     child: TextButton(
                       child: Text(
-                        "Listo",
+                        textButtom,
                         style: TextStyle(
                           color: mimodoTheme.background,
                           fontSize: 30,
@@ -79,7 +89,12 @@ class TablaPosicionesPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, RuletaDeGeneros.routeName);
+                        if (equipoProvider.getRonda() > 0) {
+                          Navigator.pushNamed(
+                              context, RuletaDeGeneros.routeName);
+                        } else {
+                          Navigator.pushNamed(context, HomePage.routeName);
+                        }
                       },
                     ),
                   ),

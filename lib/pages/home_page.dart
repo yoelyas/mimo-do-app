@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pictionaty_app/const/config.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/widgets/bottom.dart';
 import 'package:pictionaty_app/widgets/drawer_bar.dart';
@@ -40,18 +41,21 @@ class HomePage extends StatelessWidget {
             ),
             const Bottom(
               text: "Ruleta",
+              imagen: 'assets/ruleta.png',
             ),
             const SizedBox(
               height: 30,
             ),
-            const Bottom(
+            Bottom(
               text: "En cartelera",
+              imagen: APP_CONFIG['drawer']!["avatar"],
             ),
             const SizedBox(
               height: 30,
             ),
-            const Bottom(
+            Bottom(
               text: "Configuracion",
+              imagen: APP_CONFIG['drawer']!["avatar"],
             ),
           ],
         ),

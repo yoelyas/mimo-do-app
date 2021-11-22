@@ -21,6 +21,8 @@ class PeliculaPage extends StatelessWidget {
     final mainAppBar = MimoAppbar();
     final moviesProvider = Provider.of<MoviesProvider>(context);
 
+    final stateProvider = Provider.of<StateProvider>(context);
+
     final Movie movie = moviesProvider.getPeliculaActual();
 
     if (moviesProvider.getPeliculas().isEmpty) {
@@ -55,7 +57,9 @@ class PeliculaPage extends StatelessWidget {
               ),
               child: TextButton(
                   onPressed: () {
-                    moviesProvider.recargar();
+                    if (!stateProvider.getComenzo()) {
+                      moviesProvider.recargar();
+                    }
                   },
                   child: Icon(
                     Icons.replay_outlined,
@@ -68,14 +72,21 @@ class PeliculaPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  width: double.infinity,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: mimodoTheme.primary,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Contador()),
+              child: GestureDetector(
+                onTap: () {
+                  stateProvider.setIsTap(false);
+                  stateProvider.setComenzo(false);
+                  Navigator.pushNamed(context, PreguntaPage.routeName);
+                },
+                child: Container(
+                    width: double.infinity,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: mimodoTheme.primary,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Contador()),
+              ),
             )
           ],
         ),
@@ -236,6 +247,7 @@ class Contador extends StatelessWidget {
         ),
         onPressed: () {
           stateProvider.setIsTap(true);
+          stateProvider.setComenzo(true);
         },
       );
     }
@@ -267,6 +279,8 @@ class Countdawn extends StatelessWidget {
         interval: const Duration(milliseconds: 100),
         onFinished: () {
           stateProvider.setIsTap(false);
+
+          stateProvider.setComenzo(false);
           Navigator.pushNamed(context, PreguntaPage.routeName);
         },
       ),

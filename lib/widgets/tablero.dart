@@ -45,7 +45,7 @@ class Tablero extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          equipoProvider.traermeEquipo(1),
+                          equipoProvider.traermeEquipo(0),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 15,
@@ -59,7 +59,11 @@ class Tablero extends StatelessWidget {
                       height: 80,
                       child: Center(
                         child: Text(
-                          equipoProvider.traermePuntuacionEquipo(1).toString(),
+                          equipoProvider
+                              .traermePuntuacionEquipo(
+                                equipoProvider.traermeEquipo(0),
+                              )
+                              .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 30,
@@ -83,7 +87,7 @@ class Tablero extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          equipoProvider.traermeEquipo(2),
+                          equipoProvider.traermeEquipo(1),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 15,
@@ -97,7 +101,11 @@ class Tablero extends StatelessWidget {
                       height: 80,
                       child: Center(
                         child: Text(
-                          equipoProvider.traermePuntuacionEquipo(1).toString(),
+                          equipoProvider
+                              .traermePuntuacionEquipo(
+                                equipoProvider.traermeEquipo(1),
+                              )
+                              .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 30,
@@ -125,7 +133,7 @@ class Tablero extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          equipoProvider.traermeEquipo(3),
+                          equipoProvider.traermeEquipo(2),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 15,
@@ -139,7 +147,11 @@ class Tablero extends StatelessWidget {
                       height: 80,
                       child: Center(
                         child: Text(
-                          equipoProvider.traermePuntuacionEquipo(1).toString(),
+                          equipoProvider
+                              .traermePuntuacionEquipo(
+                                equipoProvider.traermeEquipo(2),
+                              )
+                              .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 30,
@@ -163,7 +175,7 @@ class Tablero extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          equipoProvider.traermeEquipo(4),
+                          equipoProvider.traermeEquipo(3),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 15,
@@ -177,7 +189,11 @@ class Tablero extends StatelessWidget {
                       height: 80,
                       child: Center(
                         child: Text(
-                          equipoProvider.traermePuntuacionEquipo(1).toString(),
+                          equipoProvider
+                              .traermePuntuacionEquipo(
+                                equipoProvider.traermeEquipo(3),
+                              )
+                              .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 30,
@@ -212,7 +228,7 @@ class Tablero extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          equipoProvider.traermeEquipo(1),
+                          equipoProvider.traermeEquipo(0),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 15,
@@ -226,7 +242,11 @@ class Tablero extends StatelessWidget {
                       height: 80,
                       child: Center(
                         child: Text(
-                          equipoProvider.traermePuntuacionEquipo(1).toString(),
+                          equipoProvider
+                              .traermePuntuacionEquipo(
+                                equipoProvider.traermeEquipo(0),
+                              )
+                              .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 30,
@@ -250,7 +270,7 @@ class Tablero extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          equipoProvider.traermeEquipo(2),
+                          equipoProvider.traermeEquipo(1),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 15,
@@ -264,7 +284,11 @@ class Tablero extends StatelessWidget {
                       height: 80,
                       child: Center(
                         child: Text(
-                          equipoProvider.traermePuntuacionEquipo(1).toString(),
+                          equipoProvider
+                              .traermePuntuacionEquipo(
+                                equipoProvider.traermeEquipo(1),
+                              )
+                              .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 30,
@@ -288,7 +312,7 @@ class Tablero extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    equipoProvider.traermeEquipo(3),
+                    equipoProvider.traermeEquipo(2),
                     style: TextStyle(
                       color: mimodoTheme.primary,
                       fontSize: 15,
@@ -301,7 +325,11 @@ class Tablero extends StatelessWidget {
                   height: 80,
                   child: Center(
                     child: Text(
-                      equipoProvider.traermePuntuacionEquipo(1).toString(),
+                      equipoProvider
+                          .traermePuntuacionEquipo(
+                            equipoProvider.traermeEquipo(2),
+                          )
+                          .toString(),
                       style: TextStyle(
                         color: mimodoTheme.primary,
                         fontSize: 30,
@@ -317,13 +345,53 @@ class Tablero extends StatelessWidget {
   }
 
   Column dosEquipos(EquipoProvider equipoProvider) {
-    print(
-      equipoProvider.traermePuntuacionEquipo(0).toString(),
-    );
     return Column(
       children: [
         Row(
           children: [
+            Container(
+                width: 175,
+                height: 300,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: mimodoTheme.primary),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          equipoProvider.traermeEquipo(0),
+                          style: TextStyle(
+                            color: mimodoTheme.primary,
+                            fontSize: 30,
+                            fontFamily: mimodoTheme.fonts.title,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 200,
+                      height: 244,
+                      child: Center(
+                        child: Text(
+                          equipoProvider
+                              .traermePuntuacionEquipo(
+                                equipoProvider.traermeEquipo(0),
+                              )
+                              .toString(),
+                          style: TextStyle(
+                            color: mimodoTheme.primary,
+                            fontSize: 45,
+                            fontFamily: mimodoTheme.fonts.text,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
             Container(
                 width: 175,
                 height: 300,
@@ -352,46 +420,11 @@ class Tablero extends StatelessWidget {
                       height: 244,
                       child: Center(
                         child: Text(
-                          equipoProvider.traermePuntuacionEquipo(0).toString(),
-                          style: TextStyle(
-                            color: mimodoTheme.primary,
-                            fontSize: 45,
-                            fontFamily: mimodoTheme.fonts.text,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
-            Container(
-                width: 175,
-                height: 300,
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: mimodoTheme.primary),
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          equipoProvider.traermeEquipo(2),
-                          style: TextStyle(
-                            color: mimodoTheme.primary,
-                            fontSize: 30,
-                            fontFamily: mimodoTheme.fonts.title,
-                          ),
-                          textAlign: TextAlign.start,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 200,
-                      height: 244,
-                      child: Center(
-                        child: Text(
-                          equipoProvider.traermePuntuacionEquipo(1).toString(),
+                          equipoProvider
+                              .traermePuntuacionEquipo(
+                                equipoProvider.traermeEquipo(1),
+                              )
+                              .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
                             fontSize: 45,
