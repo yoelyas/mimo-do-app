@@ -4,6 +4,11 @@ class StateProvider extends ChangeNotifier {
   bool _isTap = false;
   bool _comenzar = false;
 
+  reset() {
+    _isTap = false;
+    _comenzar = false;
+  }
+
   bool getComenzo() => _comenzar;
 
   setComenzo(bool comenzo) {

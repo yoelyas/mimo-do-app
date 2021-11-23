@@ -2,14 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:pictionaty_app/models/teams.dart';
 
 class EquipoProvider extends ChangeNotifier {
-  final TeamCollection _teamCollection = TeamCollection();
+  TeamCollection _teamCollection = TeamCollection();
 
   int _cantEquipos = 2;
-  final Map<String, int> _equipos = {};
+  Map<String, int> _equipos = {};
   int _tiempoJuego = 1;
-  int _rondas = 2;
+  int _rondas = 1;
   String _generoElejido = '';
   int _rondaActual = 0;
+
+  reset() {
+    _teamCollection = TeamCollection();
+    _cantEquipos = 2;
+    _equipos = {};
+    _tiempoJuego = 1;
+    _rondas = 1;
+    _generoElejido = '';
+    _rondaActual = 0;
+  }
 
   int getRondaActual() => _rondaActual;
 

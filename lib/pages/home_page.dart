@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pictionaty_app/const/config.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/widgets/bottom.dart';
 import 'package:pictionaty_app/widgets/drawer_bar.dart';
@@ -25,15 +24,24 @@ class HomePage extends StatelessWidget {
               height: 100,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Text("Elegí un modo de juego ",
-                    style: TextStyle(
-                      color: mimodoTheme.primary,
-                      fontSize: 15,
-                      fontFamily: mimodoTheme.fonts.textBold,
-                    )),
+              padding: const EdgeInsets.only(left: 8, right: 12),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text("Elegí un modo de juego ",
+                        style: TextStyle(
+                          color: mimodoTheme.primary,
+                          fontSize: 15,
+                          fontFamily: mimodoTheme.fonts.textBold,
+                        )),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 1,
+                    color: mimodoTheme.secondary,
+                  ),
+                ],
               ),
             ),
             const SizedBox(
@@ -41,21 +49,24 @@ class HomePage extends StatelessWidget {
             ),
             const Bottom(
               text: "Ruleta",
-              imagen: 'assets/ruleta.png',
+              imagen: 'assets/ruleta.gif',
+              subtexto: 'Deja al azar el genero de la pelicula',
             ),
             const SizedBox(
               height: 30,
             ),
-            Bottom(
+            const Bottom(
+              text: "Genero",
+              imagen: 'assets/genero.png',
+              subtexto: 'Selecciona el gereno de la peli que quieras',
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            const Bottom(
               text: "En cartelera",
-              imagen: APP_CONFIG['drawer']!["avatar"],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Bottom(
-              text: "Configuracion",
-              imagen: APP_CONFIG['drawer']!["avatar"],
+              imagen: 'assets/pelicula.png',
+              subtexto: 'Juega con pelis solo en cine',
             ),
           ],
         ),

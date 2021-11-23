@@ -4,10 +4,9 @@
 const Map<String, Map<String, dynamic>> APP_CONFIG = {
   "appBar": {
     "logo": "assets/logo_mimodo.png",
-    "logo-gris": "assets/fondo_mimodo.png",
   },
   "drawer": {
-    "avatar": "assets/500x300.png",
+    "avatar": "assets/fondo_mimodo.png",
   },
   "gridBreakpoints": {
     "xs": 320.0, //*1

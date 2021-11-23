@@ -7,10 +7,12 @@ import 'package:provider/provider.dart';
 //crea el boton de sucursal
 class Bottom extends StatelessWidget {
   final String text;
+  final String subtexto;
   final String imagen;
   // ignore: use_key_in_widget_constructors
   const Bottom({
     required this.text,
+    required this.subtexto,
     required this.imagen,
   });
 
@@ -22,11 +24,16 @@ class Bottom extends StatelessWidget {
       child: TextButton(
         child: Row(
           children: [
-            Image(
-              fit: BoxFit.fill,
-              image: AssetImage(imagen),
-              height: 50,
-              width: 70,
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 1, color: mimodoTheme.primary),
+              ),
+              child: Image(
+                fit: BoxFit.fill,
+                image: AssetImage(imagen),
+                height: 50,
+                width: 70,
+              ),
             ),
             const SizedBox(
               width: 20,
@@ -50,7 +57,7 @@ class Bottom extends StatelessWidget {
                           const SizedBox(
                             height: 8,
                           ),
-                          Text("Subtexto algo largo para probar",
+                          Text(subtexto,
                               style: TextStyle(
                                 color: mimodoTheme.primary,
                                 fontSize: 12,

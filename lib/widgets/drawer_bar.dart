@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/config.dart';
 import 'package:pictionaty_app/const/theme.dart';
+import 'package:pictionaty_app/pages/home_page.dart';
+import 'package:pictionaty_app/providers/equipo_provider.dart';
+import 'package:pictionaty_app/providers/form_provider.dart';
+import 'package:pictionaty_app/providers/movies_provider.dart';
+import 'package:pictionaty_app/providers/state_provider.dart';
+import 'package:pictionaty_app/providers/viewport_provider.dart';
+import 'package:provider/provider.dart';
 
 //menu del costado
 
@@ -17,29 +24,58 @@ class SideBarMenu extends StatefulWidget {
 class _SideBarMenuState extends State<SideBarMenu> {
   @override
   Widget build(BuildContext context) {
-    String image = APP_CONFIG['appBar']!['logo-gris'];
+    final loginFormProvider = Provider.of<LoginFormProvider>(context);
+    final moviesProvider = Provider.of<MoviesProvider>(context);
+    final stateProvider = Provider.of<StateProvider>(context);
+    final equipoProvider = Provider.of<EquipoProvider>(context);
+    final viewportProvider = Provider.of<ViewportProvider>(context);
+    String image = APP_CONFIG['drawer']!['avatar'];
     return Align(
       alignment: Alignment.topLeft,
       child: SizedBox(
-        height: 300,
-        width: MediaQuery.of(context).size.width * 0.5,
+        height: viewportProvider.getCalcHeight(0.5),
+        width: viewportProvider.getFullWidth() * 0.5,
         child: Drawer(
           child: Container(
             color: mimodoTheme.background,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: viewportProvider.getCalcHeight(0.045),
                 ),
                 Image(
                   fit: BoxFit.fill,
                   image: AssetImage(image),
                 ),
-                const SizedBox(
-                  height: 35,
+                SizedBox(
+                  height: viewportProvider.getCalcHeight(0.05),
                 ),
-                Text(
+                Container(
+                  width: viewportProvider.getCalcWidth(0.4),
+                  height: viewportProvider.getCalcHeight(0.08),
+                  decoration: BoxDecoration(
+                    color: mimodoTheme.primary,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextButton(
+                    child: Text(
+                      'Inicio',
+                      style: TextStyle(
+                        color: mimodoTheme.background,
+                        fontSize: 26,
+                      ),
+                    ),
+                    onPressed: () {
+                      loginFormProvider.reset();
+                      moviesProvider.reset();
+                      stateProvider.reset();
+                      equipoProvider.reset();
+                      Navigator.pushNamed(context, HomePage.routeName);
+                    },
+                  ),
+                )
+                /*Text(
                   'Volumen',
                   style: TextStyle(
                     color: mimodoTheme.primary,
@@ -103,7 +139,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                       ),
                     ),
                   ],
-                ),
+                ),*/
               ],
             ),
           ),

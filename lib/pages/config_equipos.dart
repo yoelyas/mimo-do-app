@@ -80,7 +80,7 @@ class _ConfigEquiposState extends State<ConfigEquipos> {
                         ),
                       ),
                       onPressed: () {
-                        loginForm.isValidForm();
+                        //loginForm.isValidForm();
                         equipoProvider.initialize(loginForm.getNombreEquipos());
                         Navigator.pushNamed(context, ConfigJuegoPage.routeName);
                       },

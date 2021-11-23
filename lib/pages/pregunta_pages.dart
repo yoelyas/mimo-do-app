@@ -104,8 +104,6 @@ class PreguntaPage extends StatelessWidget {
                       //como la ronda actual inicia en 0 se le suma 1
 
                       onPressed: () {
-                        print('Ronda: ${equipoProvider.getRondaActual()}');
-
                         equipoProvider.setPuntosEquipo(equipoProvider
                             .traermeEquipo(equipoProvider.getRondaActual()));
                         equipoProvider.setRondaActual();

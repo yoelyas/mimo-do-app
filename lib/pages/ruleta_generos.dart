@@ -359,6 +359,7 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
   }
 }
 
+// ignore: must_be_immutable
 class Caja extends StatelessWidget {
   String text = '';
   Color color;

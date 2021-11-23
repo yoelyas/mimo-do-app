@@ -408,7 +408,7 @@ class Tablero extends StatelessWidget {
                           equipoProvider.traermeEquipo(1),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 30,
+                            fontSize: 20,
                             fontFamily: mimodoTheme.fonts.title,
                           ),
                           textAlign: TextAlign.start,
@@ -416,8 +416,6 @@ class Tablero extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 200,
-                      height: 244,
                       child: Center(
                         child: Text(
                           equipoProvider

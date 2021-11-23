@@ -22,9 +22,17 @@ class TextBox extends StatelessWidget {
       autocorrect: false,
       textCapitalization: TextCapitalization.sentences,
       style: TextStyle(color: mimodoTheme.primary, fontSize: 20.0),
-      decoration: InputDecorations(),
+      decoration: inputDecorations(),
       initialValue: 'Equipo $equipo',
-      onChanged: (value) => loginForm.setNombreEquipo(equipo, value),
+      onChanged: (value) {
+        RegExp regExp = RegExp(r'^[\w ]+$');
+        if (value != null &&
+            value.trim().length < 21 &&
+            value.trim().isNotEmpty &&
+            regExp.hasMatch(value)) {
+          loginForm.setNombreEquipo(equipo, value);
+        }
+      },
       validator: (value) {
         RegExp regExp = RegExp(r'^[\w ]+$');
         if (value != null &&
@@ -37,7 +45,7 @@ class TextBox extends StatelessWidget {
     );
   }
 
-  InputDecoration InputDecorations() {
+  InputDecoration inputDecorations() {
     return InputDecoration(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(20),
@@ -83,7 +91,7 @@ class Equipos extends StatelessWidget {
     }
 
     return Form(
-      key: loginForm.formKey,
+      //key: loginForm.formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: equipos,

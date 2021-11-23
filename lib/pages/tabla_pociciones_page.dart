@@ -3,6 +3,9 @@ import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/pages/home_page.dart';
 import 'package:pictionaty_app/pages/ruleta_generos.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
+import 'package:pictionaty_app/providers/form_provider.dart';
+import 'package:pictionaty_app/providers/movies_provider.dart';
+import 'package:pictionaty_app/providers/state_provider.dart';
 import 'package:pictionaty_app/widgets/drawer_bar.dart';
 import 'package:pictionaty_app/widgets/main_app_bar.dart';
 import 'package:pictionaty_app/widgets/tablero.dart';
@@ -15,6 +18,9 @@ class TablaPosicionesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final equipoProvider = Provider.of<EquipoProvider>(context);
+    final loginFormProvider = Provider.of<LoginFormProvider>(context);
+    final moviesProvider = Provider.of<MoviesProvider>(context);
+    final stateProvider = Provider.of<StateProvider>(context);
     final mainAppBar = MimoAppbar();
     String textButtom = "Listo";
 
@@ -93,6 +99,10 @@ class TablaPosicionesPage extends StatelessWidget {
                           Navigator.pushNamed(
                               context, RuletaDeGeneros.routeName);
                         } else {
+                          loginFormProvider.reset();
+                          moviesProvider.reset();
+                          stateProvider.reset();
+                          equipoProvider.reset();
                           Navigator.pushNamed(context, HomePage.routeName);
                         }
                       },
