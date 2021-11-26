@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
+import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
 
 class Tablero extends StatelessWidget {
@@ -12,29 +13,30 @@ class Tablero extends StatelessWidget {
     switch (equipoProvider.getCantEquipos()) {
       case 2:
         {
-          return dosEquipos(equipoProvider);
+          return dosEquipos(context, equipoProvider);
         }
 
       case 3:
         {
-          return tresEquipos(equipoProvider);
+          return tresEquipos(context, equipoProvider);
         }
 
       default:
         {
-          return cuatroEquipos(equipoProvider);
+          return cuatroEquipos(context, equipoProvider);
         }
     }
   }
 
-  Column cuatroEquipos(EquipoProvider equipoProvider) {
+  Column cuatroEquipos(BuildContext context, EquipoProvider equipoProvider) {
+    final viewport = Provider.of<ViewportProvider>(context);
     return Column(
       children: [
         Row(
           children: [
             Container(
-                width: 175,
-                height: 150,
+                width: viewport.getCalcWidth(0.44),
+                height: viewport.getCalcHeight(0.3),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
@@ -42,21 +44,26 @@ class Tablero extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
+                      height: viewport.getCalcHeight(0.13),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(
+                          top: viewport.getCalcHeight(0.03),
+                          bottom: viewport.getCalcHeight(0.01),
+                          left: viewport.getCalcWidth(0.03),
+                        ),
                         child: Text(
                           equipoProvider.traermeEquipo(0),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 15,
+                            fontSize: viewport.getCalcHeight(0.03),
                             fontFamily: mimodoTheme.fonts.title,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 200,
-                      height: 80,
+                      width: double.infinity,
+                      height: viewport.getCalcHeight(0.15),
                       child: Center(
                         child: Text(
                           equipoProvider
@@ -66,7 +73,7 @@ class Tablero extends StatelessWidget {
                               .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 30,
+                            fontSize: viewport.getCalcHeight(0.1),
                             fontFamily: mimodoTheme.fonts.text,
                           ),
                         ),
@@ -75,8 +82,8 @@ class Tablero extends StatelessWidget {
                   ],
                 )),
             Container(
-                width: 175,
-                height: 150,
+                width: viewport.getCalcWidth(0.44),
+                height: viewport.getCalcHeight(0.3),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
@@ -84,21 +91,26 @@ class Tablero extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
+                      height: viewport.getCalcHeight(0.13),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(
+                          top: viewport.getCalcHeight(0.03),
+                          bottom: viewport.getCalcHeight(0.01),
+                          left: viewport.getCalcWidth(0.03),
+                        ),
                         child: Text(
                           equipoProvider.traermeEquipo(1),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 15,
+                            fontSize: viewport.getCalcHeight(0.03),
                             fontFamily: mimodoTheme.fonts.title,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 200,
-                      height: 80,
+                      width: double.infinity,
+                      height: viewport.getCalcHeight(0.15),
                       child: Center(
                         child: Text(
                           equipoProvider
@@ -108,7 +120,7 @@ class Tablero extends StatelessWidget {
                               .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 30,
+                            fontSize: viewport.getCalcHeight(0.1),
                             fontFamily: mimodoTheme.fonts.text,
                           ),
                         ),
@@ -121,8 +133,8 @@ class Tablero extends StatelessWidget {
         Row(
           children: [
             Container(
-                width: 175,
-                height: 150,
+                width: viewport.getCalcWidth(0.44),
+                height: viewport.getCalcHeight(0.3),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
@@ -130,21 +142,26 @@ class Tablero extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
+                      height: viewport.getCalcHeight(0.13),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(
+                          top: viewport.getCalcHeight(0.03),
+                          bottom: viewport.getCalcHeight(0.01),
+                          left: viewport.getCalcWidth(0.03),
+                        ),
                         child: Text(
                           equipoProvider.traermeEquipo(2),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 15,
+                            fontSize: viewport.getCalcHeight(0.03),
                             fontFamily: mimodoTheme.fonts.title,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 200,
-                      height: 80,
+                      width: double.infinity,
+                      height: viewport.getCalcHeight(0.15),
                       child: Center(
                         child: Text(
                           equipoProvider
@@ -154,7 +171,7 @@ class Tablero extends StatelessWidget {
                               .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 30,
+                            fontSize: viewport.getCalcHeight(0.1),
                             fontFamily: mimodoTheme.fonts.text,
                           ),
                         ),
@@ -163,8 +180,8 @@ class Tablero extends StatelessWidget {
                   ],
                 )),
             Container(
-                width: 175,
-                height: 150,
+                width: viewport.getCalcWidth(0.44),
+                height: viewport.getCalcHeight(0.3),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
@@ -172,21 +189,26 @@ class Tablero extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
+                      height: viewport.getCalcHeight(0.13),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(
+                          top: viewport.getCalcHeight(0.03),
+                          bottom: viewport.getCalcHeight(0.01),
+                          left: viewport.getCalcWidth(0.03),
+                        ),
                         child: Text(
                           equipoProvider.traermeEquipo(3),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 15,
+                            fontSize: viewport.getCalcHeight(0.03),
                             fontFamily: mimodoTheme.fonts.title,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 200,
-                      height: 80,
+                      width: double.infinity,
+                      height: viewport.getCalcHeight(0.15),
                       child: Center(
                         child: Text(
                           equipoProvider
@@ -196,7 +218,7 @@ class Tablero extends StatelessWidget {
                               .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 30,
+                            fontSize: viewport.getCalcHeight(0.1),
                             fontFamily: mimodoTheme.fonts.text,
                           ),
                         ),
@@ -210,14 +232,15 @@ class Tablero extends StatelessWidget {
     );
   }
 
-  Column tresEquipos(EquipoProvider equipoProvider) {
+  Column tresEquipos(BuildContext context, EquipoProvider equipoProvider) {
+    final viewport = Provider.of<ViewportProvider>(context);
     return Column(
       children: [
         Row(
           children: [
             Container(
-                width: 175,
-                height: 150,
+                width: viewport.getCalcWidth(0.44),
+                height: viewport.getCalcHeight(0.3),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
@@ -225,21 +248,26 @@ class Tablero extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
+                      height: viewport.getCalcHeight(0.13),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(
+                          top: viewport.getCalcHeight(0.03),
+                          bottom: viewport.getCalcHeight(0.01),
+                          left: viewport.getCalcWidth(0.03),
+                        ),
                         child: Text(
                           equipoProvider.traermeEquipo(0),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 15,
+                            fontSize: viewport.getCalcHeight(0.03),
                             fontFamily: mimodoTheme.fonts.title,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 200,
-                      height: 80,
+                      width: double.infinity,
+                      height: viewport.getCalcHeight(0.15),
                       child: Center(
                         child: Text(
                           equipoProvider
@@ -249,7 +277,7 @@ class Tablero extends StatelessWidget {
                               .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 30,
+                            fontSize: viewport.getCalcHeight(0.1),
                             fontFamily: mimodoTheme.fonts.text,
                           ),
                         ),
@@ -258,8 +286,8 @@ class Tablero extends StatelessWidget {
                   ],
                 )),
             Container(
-                width: 175,
-                height: 150,
+                width: viewport.getCalcWidth(0.44),
+                height: viewport.getCalcHeight(0.3),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
@@ -267,21 +295,26 @@ class Tablero extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
+                      height: viewport.getCalcHeight(0.13),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(
+                          top: viewport.getCalcHeight(0.03),
+                          bottom: viewport.getCalcHeight(0.01),
+                          left: viewport.getCalcWidth(0.03),
+                        ),
                         child: Text(
                           equipoProvider.traermeEquipo(1),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 15,
+                            fontSize: viewport.getCalcHeight(0.03),
                             fontFamily: mimodoTheme.fonts.title,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 200,
-                      height: 80,
+                      width: double.infinity,
+                      height: viewport.getCalcHeight(0.15),
                       child: Center(
                         child: Text(
                           equipoProvider
@@ -291,7 +324,7 @@ class Tablero extends StatelessWidget {
                               .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 30,
+                            fontSize: viewport.getCalcHeight(0.1),
                             fontFamily: mimodoTheme.fonts.text,
                           ),
                         ),
@@ -302,27 +335,30 @@ class Tablero extends StatelessWidget {
           ],
         ),
         Container(
-            width: 350,
-            height: 150,
+            width: viewport.getCalcWidth(0.88),
+            height: viewport.getCalcHeight(0.3),
             decoration: BoxDecoration(
               border: Border.all(width: 1, color: mimodoTheme.primary),
             ),
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.only(
+                    top: viewport.getCalcHeight(0.03),
+                    bottom: viewport.getCalcHeight(0.01),
+                  ),
                   child: Text(
                     equipoProvider.traermeEquipo(2),
                     style: TextStyle(
                       color: mimodoTheme.primary,
-                      fontSize: 15,
+                      fontSize: viewport.getCalcHeight(0.03),
                       fontFamily: mimodoTheme.fonts.title,
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 200,
-                  height: 80,
+                  width: double.infinity,
+                  height: viewport.getCalcHeight(0.15),
                   child: Center(
                     child: Text(
                       equipoProvider
@@ -332,7 +368,7 @@ class Tablero extends StatelessWidget {
                           .toString(),
                       style: TextStyle(
                         color: mimodoTheme.primary,
-                        fontSize: 30,
+                        fontSize: viewport.getCalcHeight(0.1),
                         fontFamily: mimodoTheme.fonts.text,
                       ),
                     ),
@@ -344,14 +380,15 @@ class Tablero extends StatelessWidget {
     );
   }
 
-  Column dosEquipos(EquipoProvider equipoProvider) {
+  Column dosEquipos(BuildContext context, EquipoProvider equipoProvider) {
+    final viewport = Provider.of<ViewportProvider>(context);
     return Column(
       children: [
         Row(
           children: [
             Container(
-                width: 175,
-                height: 300,
+                width: viewport.getCalcWidth(0.44),
+                height: viewport.getCalcHeight(0.6),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
@@ -359,13 +396,18 @@ class Tablero extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
+                      height: viewport.getCalcHeight(0.2),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(
+                          top: viewport.getCalcHeight(0.03),
+                          bottom: viewport.getCalcHeight(0.01),
+                          left: viewport.getCalcWidth(0.03),
+                        ),
                         child: Text(
                           equipoProvider.traermeEquipo(0),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 30,
+                            fontSize: viewport.getCalcHeight(0.03),
                             fontFamily: mimodoTheme.fonts.title,
                           ),
                           textAlign: TextAlign.start,
@@ -373,8 +415,8 @@ class Tablero extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 200,
-                      height: 244,
+                      width: double.infinity,
+                      height: viewport.getCalcHeight(0.2),
                       child: Center(
                         child: Text(
                           equipoProvider
@@ -384,7 +426,7 @@ class Tablero extends StatelessWidget {
                               .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 45,
+                            fontSize: viewport.getCalcHeight(0.1),
                             fontFamily: mimodoTheme.fonts.text,
                           ),
                         ),
@@ -393,8 +435,8 @@ class Tablero extends StatelessWidget {
                   ],
                 )),
             Container(
-                width: 175,
-                height: 300,
+                width: viewport.getCalcWidth(0.44),
+                height: viewport.getCalcHeight(0.6),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: mimodoTheme.primary),
                 ),
@@ -402,13 +444,18 @@ class Tablero extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
+                      height: viewport.getCalcHeight(0.2),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(
+                          top: viewport.getCalcHeight(0.03),
+                          bottom: viewport.getCalcHeight(0.01),
+                          left: viewport.getCalcWidth(0.03),
+                        ),
                         child: Text(
                           equipoProvider.traermeEquipo(1),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 20,
+                            fontSize: viewport.getCalcHeight(0.03),
                             fontFamily: mimodoTheme.fonts.title,
                           ),
                           textAlign: TextAlign.start,
@@ -416,6 +463,8 @@ class Tablero extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
+                      width: double.infinity,
+                      height: viewport.getCalcHeight(0.2),
                       child: Center(
                         child: Text(
                           equipoProvider
@@ -425,7 +474,7 @@ class Tablero extends StatelessWidget {
                               .toString(),
                           style: TextStyle(
                             color: mimodoTheme.primary,
-                            fontSize: 45,
+                            fontSize: viewport.getCalcHeight(0.1),
                             fontFamily: mimodoTheme.fonts.text,
                           ),
                         ),

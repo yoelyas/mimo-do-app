@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
 import 'package:pictionaty_app/providers/form_provider.dart';
+import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
 
 class TextBox extends StatelessWidget {
@@ -17,11 +18,15 @@ class TextBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginForm = Provider.of<LoginFormProvider>(context);
+    final viewport = Provider.of<ViewportProvider>(context);
     return TextFormField(
       key: Key(equipo.toString()),
       autocorrect: false,
       textCapitalization: TextCapitalization.sentences,
-      style: TextStyle(color: mimodoTheme.primary, fontSize: 20.0),
+      style: TextStyle(
+        color: mimodoTheme.primary,
+        fontSize: viewport.getCalcHeight(0.04),
+      ),
       decoration: inputDecorations(),
       initialValue: 'Equipo $equipo',
       onChanged: (value) {
@@ -71,8 +76,8 @@ class Equipos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loginForm = Provider.of<LoginFormProvider>(context);
     final equipoProvider = Provider.of<EquipoProvider>(context);
+    final viewport = Provider.of<ViewportProvider>(context);
     int cantEquipos = equipoProvider.getCantEquipos();
     List<Widget> equipos = [];
 
@@ -84,8 +89,8 @@ class Equipos extends StatelessWidget {
           ),
           equipo: cont));
       equipos.add(
-        const SizedBox(
-          height: 20,
+        SizedBox(
+          height: viewport.getCalcHeight(0.03),
         ),
       );
     }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/theme.dart';
+import 'package:pictionaty_app/providers/viewport_provider.dart';
+import 'package:provider/provider.dart';
 
 class GeneroButton extends StatelessWidget {
   final String text;
@@ -9,13 +11,19 @@ class GeneroButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewport = Provider.of<ViewportProvider>(context);
     return SizedBox(
-      width: 100,
-      height: 100,
+      width: viewport.getCalcWidth(0.2),
+      height: viewport.getCalcHeight(0.2),
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.only(
+              top: viewport.getCalcWidth(0.01),
+              bottom: viewport.getCalcWidth(0.02),
+              left: viewport.getCalcWidth(0.02),
+              right: viewport.getCalcWidth(0.02),
+            ),
             child: Container(
               decoration: ShapeDecoration(
                   color: mimodoTheme.primary,
@@ -30,7 +38,7 @@ class GeneroButton extends StatelessWidget {
               child: IconButton(
                 icon: Icon(icon),
                 color: mimodoTheme.background,
-                iconSize: 50,
+                iconSize: viewport.getCalcHeight(0.08),
                 onPressed: () {},
               ),
             ),
@@ -39,7 +47,7 @@ class GeneroButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: mimodoTheme.primary,
-              fontSize: 15,
+              fontSize: viewport.getCalcHeight(0.025),
               fontFamily: mimodoTheme.fonts.title,
               fontWeight: FontWeight.bold,
             ),

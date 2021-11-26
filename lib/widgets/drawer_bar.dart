@@ -28,13 +28,13 @@ class _SideBarMenuState extends State<SideBarMenu> {
     final moviesProvider = Provider.of<MoviesProvider>(context);
     final stateProvider = Provider.of<StateProvider>(context);
     final equipoProvider = Provider.of<EquipoProvider>(context);
-    final viewportProvider = Provider.of<ViewportProvider>(context);
+    final viewport = Provider.of<ViewportProvider>(context);
     String image = APP_CONFIG['drawer']!['avatar'];
     return Align(
       alignment: Alignment.topLeft,
       child: SizedBox(
-        height: viewportProvider.getCalcHeight(0.5),
-        width: viewportProvider.getFullWidth() * 0.5,
+        height: viewport.getCalcHeight(0.5),
+        width: viewport.getFullWidth() * 0.5,
         child: Drawer(
           child: Container(
             color: mimodoTheme.background,
@@ -42,18 +42,18 @@ class _SideBarMenuState extends State<SideBarMenu> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: viewportProvider.getCalcHeight(0.045),
+                  height: viewport.getCalcHeight(0.045),
                 ),
                 Image(
                   fit: BoxFit.fill,
                   image: AssetImage(image),
                 ),
                 SizedBox(
-                  height: viewportProvider.getCalcHeight(0.05),
+                  height: viewport.getCalcHeight(0.05),
                 ),
                 Container(
-                  width: viewportProvider.getCalcWidth(0.4),
-                  height: viewportProvider.getCalcHeight(0.08),
+                  width: viewport.getCalcWidth(0.4),
+                  height: viewport.getCalcHeight(0.08),
                   decoration: BoxDecoration(
                     color: mimodoTheme.primary,
                     borderRadius: BorderRadius.circular(10),
@@ -63,7 +63,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                       'Inicio',
                       style: TextStyle(
                         color: mimodoTheme.background,
-                        fontSize: 26,
+                        fontSize: viewport.getCalcHeight(0.04),
                       ),
                     ),
                     onPressed: () {
@@ -75,71 +75,6 @@ class _SideBarMenuState extends State<SideBarMenu> {
                     },
                   ),
                 )
-                /*Text(
-                  'Volumen',
-                  style: TextStyle(
-                    color: mimodoTheme.primary,
-                    fontSize: 20,
-                    fontFamily: mimodoTheme.fonts.title,
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 40,
-                      height: 40,
-                      color: mimodoTheme.primary,
-                      child: TextButton(
-                        child: Icon(
-                          Icons.add,
-                          color: mimodoTheme.background,
-                          size: 26,
-                        ),
-                        onPressed: () {
-                          if (volumen < 10) {
-                            setState(() {
-                              volumen++;
-                            });
-                          }
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      width: 50,
-                      child: Center(
-                        child: Text(volumen.toString(),
-                            style: TextStyle(
-                              color: mimodoTheme.primary,
-                              fontSize: 30,
-                              fontFamily: mimodoTheme.fonts.textBold,
-                            )),
-                      ),
-                    ),
-                    Container(
-                      width: 40,
-                      height: 40,
-                      color: mimodoTheme.primary,
-                      child: TextButton(
-                        child: Icon(
-                          Icons.remove,
-                          color: mimodoTheme.background,
-                          size: 26,
-                        ),
-                        onPressed: () {
-                          if (volumen > 0) {
-                            setState(() {
-                              volumen--;
-                            });
-                          }
-                        },
-                      ),
-                    ),
-                  ],
-                ),*/
               ],
             ),
           ),

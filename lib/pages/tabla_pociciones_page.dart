@@ -6,6 +6,7 @@ import 'package:pictionaty_app/providers/equipo_provider.dart';
 import 'package:pictionaty_app/providers/form_provider.dart';
 import 'package:pictionaty_app/providers/movies_provider.dart';
 import 'package:pictionaty_app/providers/state_provider.dart';
+import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:pictionaty_app/widgets/drawer_bar.dart';
 import 'package:pictionaty_app/widgets/main_app_bar.dart';
 import 'package:pictionaty_app/widgets/tablero.dart';
@@ -21,6 +22,7 @@ class TablaPosicionesPage extends StatelessWidget {
     final loginFormProvider = Provider.of<LoginFormProvider>(context);
     final moviesProvider = Provider.of<MoviesProvider>(context);
     final stateProvider = Provider.of<StateProvider>(context);
+    final viewport = Provider.of<ViewportProvider>(context);
     final mainAppBar = MimoAppbar();
     String textButtom = "Listo";
 
@@ -36,51 +38,61 @@ class TablaPosicionesPage extends StatelessWidget {
       body: Container(
           color: mimodoTheme.background,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.only(
+              left: viewport.getCalcWidth(0.03),
+              right: viewport.getCalcWidth(0.03),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 15,
-                ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 30, bottom: 10, left: 10),
+                  padding: EdgeInsets.only(
+                    top: viewport.getCalcHeight(0.03),
+                    bottom: viewport.getCalcHeight(0.01),
+                    left: viewport.getCalcWidth(0.03),
+                  ),
                   child: Text(
                     "Puntuacion",
                     style: TextStyle(
                       color: mimodoTheme.primary,
-                      fontSize: 15,
+                      fontSize: viewport.getCalcHeight(0.03),
                       fontFamily: mimodoTheme.fonts.title,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 8),
+                  padding: EdgeInsets.only(
+                    left: viewport.getCalcWidth(0.03),
+                    right: viewport.getCalcWidth(0.03),
+                  ),
                   child: Container(
                     width: double.infinity,
                     height: 1,
                     color: mimodoTheme.secondary,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: viewport.getCalcHeight(0.02),
                 ),
                 Container(
                   alignment: Alignment.center,
                   child: Container(
                       color: Colors.white, //grey.shade600,
-                      width: 350,
-                      height: 300,
+                      width: viewport.getCalcWidth(0.88),
+                      height: viewport.getCalcHeight(0.6),
                       child: const Tablero()),
                 ),
-                const SizedBox(
-                  height: 40,
+                SizedBox(
+                  height: viewport.getCalcHeight(0.1),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  padding: EdgeInsets.only(
+                    left: viewport.getCalcWidth(0.03),
+                    right: viewport.getCalcWidth(0.03),
+                  ),
                   child: Container(
                     width: double.infinity,
-                    height: 50,
+                    height: viewport.getCalcHeight(0.1),
                     decoration: BoxDecoration(
                       color: mimodoTheme.primary,
                       borderRadius: BorderRadius.circular(10),
@@ -90,7 +102,7 @@ class TablaPosicionesPage extends StatelessWidget {
                         textButtom,
                         style: TextStyle(
                           color: mimodoTheme.background,
-                          fontSize: 30,
+                          fontSize: viewport.getCalcHeight(0.05),
                           fontFamily: mimodoTheme.fonts.title,
                         ),
                       ),

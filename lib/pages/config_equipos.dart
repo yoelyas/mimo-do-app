@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/pages/config_juego.dart';
+import 'package:pictionaty_app/pages/tabla_pociciones_page.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
 import 'package:pictionaty_app/providers/form_provider.dart';
+import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:pictionaty_app/widgets/bottom.dart';
 import 'package:pictionaty_app/widgets/drawer_bar.dart';
 import 'package:pictionaty_app/widgets/text_box.dart';
@@ -22,6 +24,7 @@ class _ConfigEquiposState extends State<ConfigEquipos> {
   Widget build(BuildContext context) {
     final loginForm = Provider.of<LoginFormProvider>(context);
     final equipoProvider = Provider.of<EquipoProvider>(context);
+    final viewport = Provider.of<ViewportProvider>(context);
     final mainAppBar = MimoAppbar();
     return Scaffold(
         appBar: mainAppBar.getWidget(context),
@@ -32,17 +35,21 @@ class _ConfigEquiposState extends State<ConfigEquipos> {
           color: mimodoTheme.background,
           child: ListView(children: [
             Padding(
-              padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+              padding: EdgeInsets.only(
+                  top: viewport.getCalcHeight(0.05),
+                  left: viewport.getCalcWidth(0.04),
+                  right: viewport.getCalcWidth(0.04)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 30, bottom: 10),
+                    padding:
+                        EdgeInsets.only(bottom: viewport.getCalcHeight(0.01)),
                     child: Text(
                       "Selección de equipos",
                       style: TextStyle(
                         color: mimodoTheme.primary,
-                        fontSize: 15,
+                        fontSize: viewport.getCalcHeight(0.03),
                         fontFamily: mimodoTheme.fonts.title,
                       ),
                     ),
@@ -52,20 +59,20 @@ class _ConfigEquiposState extends State<ConfigEquipos> {
                     height: 1,
                     color: mimodoTheme.secondary,
                   ),
-                  const SizedBox(
-                    height: 35,
+                  SizedBox(
+                    height: viewport.getCalcHeight(0.02),
                   ),
                   const ButtomConfiEquipos(),
-                  const SizedBox(
-                    height: 35,
+                  SizedBox(
+                    height: viewport.getCalcHeight(0.04),
                   ),
                   const Equipos(),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: viewport.getCalcHeight(0.02),
                   ),
                   Container(
                     width: double.infinity,
-                    height: 50,
+                    height: viewport.getCalcHeight(0.1),
                     decoration: BoxDecoration(
                       color: mimodoTheme.primary,
                       borderRadius: BorderRadius.circular(10),
@@ -75,7 +82,7 @@ class _ConfigEquiposState extends State<ConfigEquipos> {
                         "Listo",
                         style: TextStyle(
                           color: mimodoTheme.background,
-                          fontSize: 30,
+                          fontSize: viewport.getCalcHeight(0.05),
                           fontFamily: mimodoTheme.fonts.title,
                         ),
                       ),
@@ -86,9 +93,9 @@ class _ConfigEquiposState extends State<ConfigEquipos> {
                       },
                     ),
                   ),
-                  const SizedBox(
-                    height: 50,
-                  ),
+                  SizedBox(
+                    height: 10,
+                  )
                 ],
               ),
             ),

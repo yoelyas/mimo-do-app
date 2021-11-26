@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/theme.dart';
+import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:pictionaty_app/widgets/bottom.dart';
 import 'package:pictionaty_app/widgets/drawer_bar.dart';
 import 'package:pictionaty_app/widgets/main_app_bar.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = 'home';
@@ -10,6 +12,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewport = Provider.of<ViewportProvider>(context);
     final mainAppBar = MimoAppbar();
     return Scaffold(
       appBar: mainAppBar.getWidget(context),
@@ -20,8 +23,8 @@ class HomePage extends StatelessWidget {
         color: mimodoTheme.background,
         child: Column(
           children: [
-            const SizedBox(
-              height: 100,
+            SizedBox(
+              height: viewport.getCalcHeight(0.1),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8, right: 12),
@@ -32,7 +35,7 @@ class HomePage extends StatelessWidget {
                     child: Text("Elegí un modo de juego ",
                         style: TextStyle(
                           color: mimodoTheme.primary,
-                          fontSize: 15,
+                          fontSize: viewport.getCalcHeight(0.03),
                           fontFamily: mimodoTheme.fonts.textBold,
                         )),
                   ),
@@ -44,24 +47,24 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: viewport.getCalcHeight(0.02),
             ),
             const Bottom(
               text: "Ruleta",
               imagen: 'assets/ruleta.gif',
               subtexto: 'Deja al azar el genero de la pelicula',
             ),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: viewport.getCalcHeight(0.1),
             ),
             const Bottom(
               text: "Genero",
               imagen: 'assets/genero.png',
-              subtexto: 'Selecciona el gereno de la peli que quieras',
+              subtexto: 'Selecciona el gereno de la peli',
             ),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: viewport.getCalcHeight(0.1),
             ),
             const Bottom(
               text: "En cartelera",

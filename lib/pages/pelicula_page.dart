@@ -20,7 +20,6 @@ class PeliculaPage extends StatelessWidget {
     final viewport = Provider.of<ViewportProvider>(context);
     final mainAppBar = MimoAppbar();
     final moviesProvider = Provider.of<MoviesProvider>(context);
-
     final stateProvider = Provider.of<StateProvider>(context);
 
     final Movie movie = moviesProvider.getPeliculaActual();
@@ -46,11 +45,11 @@ class PeliculaPage extends StatelessWidget {
               movie: movie,
             ),
             SizedBox(
-              height: viewport.getHeight() * 0.01,
+              height: viewport.getCalcWidth(0.01),
             ),
             Container(
-              width: viewport.getWidth() * 0.12,
-              height: viewport.getHeight() * 0.08,
+              width: viewport.getCalcWidth(0.11),
+              height: viewport.getCalcWidth(0.11),
               decoration: BoxDecoration(
                 color: mimodoTheme.primary,
                 borderRadius: BorderRadius.circular(10),
@@ -64,14 +63,17 @@ class PeliculaPage extends StatelessWidget {
                   child: Icon(
                     Icons.replay_outlined,
                     color: mimodoTheme.background,
-                    size: 20,
+                    size: viewport.getCalcHeight(0.05),
                   )),
             ),
             SizedBox(
-              height: viewport.getHeight() * 0.01,
+              height: viewport.getCalcHeight(0.01),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(
+                  top: viewport.getCalcHeight(0.02),
+                  left: viewport.getCalcWidth(0.04),
+                  right: viewport.getCalcWidth(0.04)),
               child: GestureDetector(
                 onTap: () {
                   stateProvider.setIsTap(false);
@@ -80,7 +82,7 @@ class PeliculaPage extends StatelessWidget {
                 },
                 child: Container(
                     width: double.infinity,
-                    height: 50,
+                    height: viewport.getCalcHeight(0.1),
                     decoration: BoxDecoration(
                       color: mimodoTheme.primary,
                       borderRadius: BorderRadius.circular(10),
@@ -105,18 +107,22 @@ class TituloPelicula extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewport = Provider.of<ViewportProvider>(context);
     return Padding(
-      padding: const EdgeInsets.all(3.0),
+      padding: EdgeInsets.only(
+          top: viewport.getCalcHeight(0.02),
+          left: viewport.getCalcWidth(0.02),
+          right: viewport.getCalcWidth(0.02)),
       child: Container(
         width: double.infinity,
+        height: viewport.getCalcWidth(0.2),
         alignment: Alignment.topCenter,
-        height: 80,
         child: Text(
           movie.title,
           maxLines: 2,
           style: TextStyle(
             color: Colors.white,
-            fontSize: 20,
+            fontSize: viewport.getCalcHeight(0.05),
             fontFamily: mimodoTheme.fonts.title,
           ),
         ),
@@ -150,7 +156,7 @@ class _PosterState extends State<Poster> {
       return Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(top: viewport.getHeight() * 0.05),
+            padding: EdgeInsets.only(top: viewport.getCalcHeight(0.05)),
             child: Container(
               decoration: BoxDecoration(
                 boxShadow: const [
@@ -161,10 +167,11 @@ class _PosterState extends State<Poster> {
                       spreadRadius: 3)
                 ],
                 //borderRadius: BorderRadius.circular(50),
-                border: Border.all(width: 10, color: Colors.black),
+                border: Border.all(
+                    width: viewport.getCalcWidth(0.025), color: Colors.black),
               ),
-              width: viewport.getWidth() * 0.5,
-              height: viewport.getHeight() * 0.5,
+              width: viewport.getCalcWidth(0.5),
+              height: viewport.getCalcHeight(0.5),
               child: GestureDetector(
                 onTap: () {
                   setState(() {
@@ -189,7 +196,7 @@ class _PosterState extends State<Poster> {
       return Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(top: viewport.getHeight() * 0.05),
+            padding: EdgeInsets.only(top: viewport.getCalcHeight(0.05)),
             child: Container(
               decoration: BoxDecoration(
                 boxShadow: const [
@@ -200,7 +207,8 @@ class _PosterState extends State<Poster> {
                       spreadRadius: 3)
                 ],
                 //borderRadius: BorderRadius.circular(50),
-                border: Border.all(width: 10, color: Colors.black),
+                border: Border.all(
+                    width: viewport.getCalcWidth(0.025), color: Colors.black),
               ),
               width: viewport.getWidth() * 0.5,
               height: viewport.getHeight() * 0.5,
@@ -216,8 +224,8 @@ class _PosterState extends State<Poster> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 80,
+          SizedBox(
+            height: viewport.getCalcWidth(0.228),
           )
         ],
       );
@@ -230,6 +238,7 @@ class Contador extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewport = Provider.of<ViewportProvider>(context);
     final stateProvider = Provider.of<StateProvider>(context);
     Widget result = Column();
 
@@ -241,7 +250,7 @@ class Contador extends StatelessWidget {
           "Comenzar",
           style: TextStyle(
             color: mimodoTheme.background,
-            fontSize: 30,
+            fontSize: viewport.getCalcHeight(0.05),
             fontFamily: mimodoTheme.fonts.title,
           ),
         ),
@@ -261,6 +270,7 @@ class Countdawn extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final viewport = Provider.of<ViewportProvider>(context);
     final stateProvider = Provider.of<StateProvider>(context);
     final equipoProvider = Provider.of<EquipoProvider>(context);
 
@@ -272,7 +282,7 @@ class Countdawn extends StatelessWidget {
           time.toString(),
           style: TextStyle(
             color: mimodoTheme.background,
-            fontSize: 30,
+            fontSize: viewport.getCalcHeight(0.05),
             fontFamily: mimodoTheme.fonts.title,
           ),
         ),

@@ -169,11 +169,11 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 270,
+                  height: viewport.getCalcHeight(0.5),
                   child: Icon(
                     Icons.arrow_forward,
                     color: mimodoTheme.primary,
-                    size: 50,
+                    size: viewport.getCalcHeight(0.1),
                   ),
                 ),
                 Expanded(
@@ -182,47 +182,49 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
                       children: getKeyFrame(currentFrame)),
                 ),
                 SizedBox(
-                  height: 270,
+                  height: viewport.getCalcHeight(0.5),
                   child: Icon(
                     Icons.arrow_back,
                     color: mimodoTheme.primary,
-                    size: 50,
+                    size: viewport.getCalcHeight(0.1),
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 40,
+            SizedBox(
+              height: viewport.getCalcHeight(0.05),
             ),
             Container(
-              width: 50,
-              height: 50,
+              width: viewport.getCalcWidth(0.12),
+              height: viewport.getCalcWidth(0.12),
               decoration: BoxDecoration(
                 color: mimodoTheme.primary,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: OutlinedButton(
+              child: TextButton(
+                  child: Icon(
+                    buttom,
+                    color: mimodoTheme.background,
+                    size: viewport.getCalcHeight(0.05),
+                  ),
                   onPressed: () {
                     if (!isRunningAnimation) {
                       startAnimation();
                     } else {
                       stopAnimation();
                     }
-                  },
-                  child: Icon(
-                    buttom,
-                    color: mimodoTheme.background,
-                    size: 20,
-                  )),
+                  }),
             ),
-            const SizedBox(
-              height: 40,
+            SizedBox(
+              height: viewport.getCalcHeight(0.05),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(
+                  left: viewport.getCalcWidth(0.04),
+                  right: viewport.getCalcWidth(0.04)),
               child: Container(
                 width: double.infinity,
-                height: 50,
+                height: viewport.getCalcHeight(0.1),
                 decoration: BoxDecoration(
                   color: mimodoTheme.primary,
                   borderRadius: BorderRadius.circular(10),
@@ -232,7 +234,7 @@ class _RuletaDeGenerosState extends State<RuletaDeGeneros> {
                     "Listo",
                     style: TextStyle(
                       color: mimodoTheme.background,
-                      fontSize: 30,
+                      fontSize: viewport.getCalcHeight(0.05),
                       fontFamily: mimodoTheme.fonts.title,
                     ),
                   ),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/theme.dart';
+import 'package:pictionaty_app/providers/viewport_provider.dart';
+import 'package:pictionaty_app/widgets/drawer_bar.dart';
 
 import 'package:pictionaty_app/widgets/genero_button.dart';
 import 'package:pictionaty_app/widgets/main_app_bar.dart';
+import 'package:provider/provider.dart';
 
 class GenerosPage extends StatelessWidget {
   static const String routeName = 'genero';
@@ -10,15 +13,23 @@ class GenerosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewport = Provider.of<ViewportProvider>(context);
     final mainAppBar = MimoAppbar();
     return Scaffold(
       appBar: mainAppBar.getWidget(context),
+      drawer: SideBarMenu(
+        context: context,
+      ),
       body: Container(
         color: mimodoTheme.background,
-        child: const Center(
+        child: Center(
           child: Padding(
-            padding: EdgeInsets.only(top: 40, left: 20),
-            child: Buttonsbody(),
+            padding: EdgeInsets.only(
+                left: viewport.getCalcWidth(0.04),
+                right: viewport.getCalcWidth(0.04)),
+            child: Buttonsbody(
+              viewport: viewport,
+            ),
           ),
         ),
       ),
@@ -27,7 +38,9 @@ class GenerosPage extends StatelessWidget {
 }
 
 class Buttonsbody extends StatelessWidget {
-  const Buttonsbody({Key? key}) : super(key: key);
+  final ViewportProvider viewport;
+  // ignore: use_key_in_widget_constructors
+  const Buttonsbody({required this.viewport});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +59,10 @@ class Buttonsbody extends StatelessWidget {
 
     generos.forEach((key, value) {
       buttoms.add(Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: EdgeInsets.only(
+            left: viewport.getCalcWidth(0.025),
+            right: viewport.getCalcWidth(0.08),
+            bottom: viewport.getCalcHeight(0.05)),
         child: GeneroButton(
           text: key,
           icon: value,
@@ -54,7 +70,9 @@ class Buttonsbody extends StatelessWidget {
       ));
       if (buttoms.length >= 3) {
         result.add(Padding(
-          padding: const EdgeInsets.only(top: 20),
+          padding: EdgeInsets.only(
+            top: viewport.getCalcHeight(0.05),
+          ),
           child: Row(
             children: buttoms,
           ),
@@ -64,7 +82,9 @@ class Buttonsbody extends StatelessWidget {
     });
     if (buttoms.isNotEmpty) {
       result.add(Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: EdgeInsets.only(
+          top: viewport.getCalcHeight(0.05),
+        ),
         child: Row(
           children: buttoms,
         ),

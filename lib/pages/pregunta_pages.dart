@@ -27,7 +27,7 @@ class PreguntaPage extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: viewport.getHeight() * 0.05),
+                padding: EdgeInsets.only(top: viewport.getCalcHeight(0.05)),
                 child: Container(
                   decoration: BoxDecoration(
                     boxShadow: const [
@@ -38,10 +38,12 @@ class PreguntaPage extends StatelessWidget {
                           spreadRadius: 3)
                     ],
                     //borderRadius: BorderRadius.circular(50),
-                    border: Border.all(width: 10, color: Colors.black),
+                    border: Border.all(
+                        width: viewport.getCalcWidth(0.025),
+                        color: Colors.black),
                   ),
-                  width: viewport.getWidth() * 0.5,
-                  height: viewport.getHeight() * 0.5,
+                  width: viewport.getCalcWidth(0.5),
+                  height: viewport.getCalcHeight(0.5),
                   child: GestureDetector(
                     child: ClipRRect(
                       child: FadeInImage(
@@ -55,39 +57,45 @@ class PreguntaPage extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                    top: viewport.getHeight() * 0.04,
-                    bottom: viewport.getHeight() * 0.02),
+                    top: viewport.getCalcHeight(0.04),
+                    bottom: viewport.getCalcHeight(0.02)),
                 child: Text(
                   'Fin de la ronda',
                   maxLines: 2,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: viewport.getCalcHeight(0.04),
                     fontFamily: mimodoTheme.fonts.title,
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                    top: viewport.getHeight() * 0.02,
-                    bottom: viewport.getHeight() * 0.04),
-                child: Text(
-                  'La pelicula era ${moviesProvider.getPeliculaActual().title} ¿Acertaron?',
-                  style: TextStyle(
-                    color: mimodoTheme.primary,
-                    fontSize: 20,
-                    fontFamily: mimodoTheme.fonts.title,
+              SizedBox(
+                width: double.infinity,
+                height: viewport.getCalcHeight(0.15),
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: viewport.getCalcHeight(0.02),
+                    bottom: viewport.getCalcHeight(0.04),
+                    left: viewport.getCalcWidth(0.04),
+                  ),
+                  child: Text(
+                    'La pelicula era ${moviesProvider.getPeliculaActual().title} ¿Acertaron?',
+                    style: TextStyle(
+                      color: mimodoTheme.primary,
+                      fontSize: viewport.getCalcHeight(0.04),
+                      fontFamily: mimodoTheme.fonts.title,
+                    ),
                   ),
                 ),
               ),
               Row(
                 children: [
                   SizedBox(
-                    width: viewport.getWidth() * 0.3,
+                    width: viewport.getCalcWidth(0.3),
                   ),
                   Container(
-                    width: viewport.getWidth() * 0.12,
-                    height: viewport.getHeight() * 0.08,
+                    width: viewport.getCalcWidth(0.11),
+                    height: viewport.getCalcWidth(0.11),
                     decoration: BoxDecoration(
                       color: mimodoTheme.primary,
                       borderRadius: BorderRadius.circular(10),
@@ -97,7 +105,7 @@ class PreguntaPage extends StatelessWidget {
                         "Si",
                         style: TextStyle(
                           color: mimodoTheme.background,
-                          fontSize: 20,
+                          fontSize: viewport.getCalcHeight(0.03),
                           fontFamily: mimodoTheme.fonts.title,
                         ),
                       ),
@@ -114,11 +122,11 @@ class PreguntaPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: viewport.getWidth() * 0.1,
+                    width: viewport.getCalcHeight(0.1),
                   ),
                   Container(
-                    width: viewport.getWidth() * 0.12,
-                    height: viewport.getHeight() * 0.08,
+                    width: viewport.getCalcWidth(0.11),
+                    height: viewport.getCalcWidth(0.11),
                     decoration: BoxDecoration(
                       color: mimodoTheme.primary,
                       borderRadius: BorderRadius.circular(10),
@@ -128,7 +136,7 @@ class PreguntaPage extends StatelessWidget {
                         "No",
                         style: TextStyle(
                           color: mimodoTheme.background,
-                          fontSize: 20,
+                          fontSize: viewport.getCalcHeight(0.03),
                           fontFamily: mimodoTheme.fonts.title,
                         ),
                       ),

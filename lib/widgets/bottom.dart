@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/pages/config_equipos.dart';
+import 'package:pictionaty_app/pages/genero_page.dart';
+import 'package:pictionaty_app/pages/ruleta_generos.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
+import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
 
 //crea el boton de sucursal
@@ -18,9 +21,10 @@ class Bottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewport = Provider.of<ViewportProvider>(context);
     return SizedBox(
       width: double.infinity,
-      height: 60,
+      //height: viewport.getCalcHeight(0.2),
       child: TextButton(
         child: Row(
           children: [
@@ -31,16 +35,14 @@ class Bottom extends StatelessWidget {
               child: Image(
                 fit: BoxFit.fill,
                 image: AssetImage(imagen),
-                height: 50,
-                width: 70,
+                height: viewport.getCalcHeight(0.1),
+                width: viewport.getCalcWidth(0.18),
               ),
             ),
-            const SizedBox(
-              width: 20,
-            ),
+            Expanded(child: Container()),
             SizedBox(
-              width: 270,
-              height: 60,
+              height: viewport.getCalcHeight(0.1),
+              width: viewport.getCalcWidth(0.7),
               child: Column(
                 children: [
                   Row(
@@ -51,16 +53,16 @@ class Bottom extends StatelessWidget {
                           Text(text,
                               style: TextStyle(
                                 color: mimodoTheme.primary,
-                                fontSize: 12,
+                                fontSize: viewport.getCalcHeight(0.04),
                                 fontFamily: mimodoTheme.fonts.title,
                               )),
-                          const SizedBox(
-                            height: 8,
+                          SizedBox(
+                            height: viewport.getCalcHeight(0.005),
                           ),
                           Text(subtexto,
                               style: TextStyle(
                                 color: mimodoTheme.primary,
-                                fontSize: 12,
+                                fontSize: viewport.getCalcHeight(0.022),
                                 fontFamily: mimodoTheme.fonts.textBold,
                               )),
                         ],
@@ -69,12 +71,12 @@ class Bottom extends StatelessWidget {
                       Icon(
                         Icons.chevron_right_sharp,
                         color: mimodoTheme.primary,
-                        size: 40,
+                        size: viewport.getCalcHeight(0.05),
                       )
                     ],
                   ),
                   Container(
-                    width: 300,
+                    width: viewport.getCalcWidth(0.7),
                     height: 1,
                     color: mimodoTheme.primary,
                   ),
@@ -84,7 +86,7 @@ class Bottom extends StatelessWidget {
           ],
         ),
         onPressed: () {
-          Navigator.pushNamed(context, ConfigEquipos.routeName);
+          Navigator.pushNamed(context, GenerosPage.routeName);
         },
       ),
     );
@@ -101,17 +103,20 @@ class ButtomConfiEquipos extends StatefulWidget {
 class _ButtomConfiEquiposState extends State<ButtomConfiEquipos> {
   @override
   Widget build(BuildContext context) {
+    final viewport = Provider.of<ViewportProvider>(context);
     final equipoProvider = Provider.of<EquipoProvider>(context);
     int cantEquipos = equipoProvider.getCantEquipos();
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(
+            viewport.getCalcHeight(0.02),
+          ),
           child: Text(
             "Equipos",
             style: TextStyle(
               color: mimodoTheme.primary,
-              fontSize: 15,
+              fontSize: viewport.getCalcHeight(0.04),
               fontFamily: mimodoTheme.fonts.title,
             ),
           ),
@@ -120,8 +125,8 @@ class _ButtomConfiEquiposState extends State<ButtomConfiEquipos> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 40,
-              height: 40,
+              width: viewport.getCalcWidth(0.11),
+              height: viewport.getCalcHeight(0.08),
               decoration: BoxDecoration(
                 color: mimodoTheme.primary,
                 borderRadius: BorderRadius.circular(10),
@@ -130,7 +135,7 @@ class _ButtomConfiEquiposState extends State<ButtomConfiEquipos> {
                 child: Icon(
                   Icons.add,
                   color: mimodoTheme.background,
-                  size: 26,
+                  size: viewport.getCalcHeight(0.05),
                 ),
                 onPressed: () {
                   if (equipoProvider.getCantEquipos() < 4) {
@@ -141,19 +146,19 @@ class _ButtomConfiEquiposState extends State<ButtomConfiEquipos> {
               ),
             ),
             SizedBox(
-              width: 90,
+              width: viewport.getCalcWidth(0.2),
               child: Center(
                 child: Text(cantEquipos.toString(),
                     style: TextStyle(
                       color: mimodoTheme.primary,
-                      fontSize: 30,
+                      fontSize: viewport.getCalcHeight(0.06),
                       fontFamily: mimodoTheme.fonts.textBold,
                     )),
               ),
             ),
             Container(
-              width: 40,
-              height: 40,
+              width: viewport.getCalcWidth(0.11),
+              height: viewport.getCalcHeight(0.08),
               decoration: BoxDecoration(
                 color: mimodoTheme.primary,
                 borderRadius: BorderRadius.circular(10),
@@ -162,7 +167,7 @@ class _ButtomConfiEquiposState extends State<ButtomConfiEquipos> {
                 child: Icon(
                   Icons.remove,
                   color: mimodoTheme.background,
-                  size: 26,
+                  size: viewport.getCalcHeight(0.05),
                 ),
                 onPressed: () {
                   if (equipoProvider.getCantEquipos() > 2) {
