@@ -108,8 +108,9 @@ class TablaPosicionesPage extends StatelessWidget {
                       ),
                       onPressed: () {
                         if (equipoProvider.getRonda() > 0) {
+                          print(equipoProvider.getModoElejido());
                           Navigator.pushNamed(
-                              context, RuletaDeGeneros.routeName);
+                              context, equipoProvider.getModoElejido());
                         } else {
                           loginFormProvider.reset();
                           moviesProvider.reset();

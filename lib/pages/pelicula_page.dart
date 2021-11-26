@@ -119,10 +119,10 @@ class TituloPelicula extends StatelessWidget {
         alignment: Alignment.topCenter,
         child: Text(
           movie.title,
-          maxLines: 2,
+          maxLines: 3,
           style: TextStyle(
             color: Colors.white,
-            fontSize: viewport.getCalcHeight(0.05),
+            fontSize: viewport.getCalcHeight(0.04),
             fontFamily: mimodoTheme.fonts.title,
           ),
         ),
@@ -170,7 +170,7 @@ class _PosterState extends State<Poster> {
                 border: Border.all(
                     width: viewport.getCalcWidth(0.025), color: Colors.black),
               ),
-              width: viewport.getCalcWidth(0.5),
+              width: viewport.getCalcWidth(0.6),
               height: viewport.getCalcHeight(0.5),
               child: GestureDetector(
                 onTap: () {
@@ -210,8 +210,8 @@ class _PosterState extends State<Poster> {
                 border: Border.all(
                     width: viewport.getCalcWidth(0.025), color: Colors.black),
               ),
-              width: viewport.getWidth() * 0.5,
-              height: viewport.getHeight() * 0.5,
+              width: viewport.getCalcWidth(0.6),
+              height: viewport.getCalcHeight(0.5),
               child: GestureDetector(
                 onTap: () {
                   setState(() {

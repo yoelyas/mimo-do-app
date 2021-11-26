@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pictionaty_app/const/config.dart';
 import 'package:pictionaty_app/const/theme.dart';
+import 'package:pictionaty_app/pages/config_equipos.dart';
+import 'package:pictionaty_app/pages/pelicula_page.dart';
+import 'package:pictionaty_app/providers/equipo_provider.dart';
+import 'package:pictionaty_app/providers/movies_provider.dart';
 import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +17,9 @@ class GeneroButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewport = Provider.of<ViewportProvider>(context);
+    final moviesProvider = Provider.of<MoviesProvider>(context);
+
+    final equipoProvider = Provider.of<EquipoProvider>(context);
     return SizedBox(
       width: viewport.getCalcWidth(0.2),
       height: viewport.getCalcHeight(0.2),
@@ -39,7 +47,11 @@ class GeneroButton extends StatelessWidget {
                 icon: Icon(icon),
                 color: mimodoTheme.background,
                 iconSize: viewport.getCalcHeight(0.08),
-                onPressed: () {},
+                onPressed: () {
+                  equipoProvider.setGeneroElejido(text);
+                  moviesProvider.getOnDisplayMovies(getIdGenero(text));
+                  Navigator.pushNamed(context, PeliculaPage.routeName);
+                },
               ),
             ),
           ),

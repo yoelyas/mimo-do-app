@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
               height: viewport.getCalcHeight(0.1),
             ),
             const Bottom(
-              text: "En cartelera",
+              text: "Cartelera",
               imagen: 'assets/pelicula.png',
               subtexto: 'Juega con pelis solo en cine',
             ),

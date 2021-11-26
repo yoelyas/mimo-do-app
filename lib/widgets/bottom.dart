@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pictionaty_app/const/theme.dart';
 import 'package:pictionaty_app/pages/config_equipos.dart';
-import 'package:pictionaty_app/pages/genero_page.dart';
-import 'package:pictionaty_app/pages/ruleta_generos.dart';
 import 'package:pictionaty_app/providers/equipo_provider.dart';
 import 'package:pictionaty_app/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +20,8 @@ class Bottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewport = Provider.of<ViewportProvider>(context);
+
+    final equipoProvider = Provider.of<EquipoProvider>(context);
     return SizedBox(
       width: double.infinity,
       //height: viewport.getCalcHeight(0.2),
@@ -86,7 +86,8 @@ class Bottom extends StatelessWidget {
           ],
         ),
         onPressed: () {
-          Navigator.pushNamed(context, GenerosPage.routeName);
+          equipoProvider.setModoElejido(text);
+          Navigator.pushNamed(context, ConfigEquipos.routeName);
         },
       ),
     );
