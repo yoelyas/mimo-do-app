@@ -17,56 +17,9 @@ samples, guidance on mobile development, and a full API reference.
 
 # Configuración
 
-Crear archivo en `lib/const/config.dart`.
+Editar `apiKey` con la api key de `themoviedb.org` en el archivo `lib/const/env.dart`.
 
-Ejemplo de `config.dart`
+Ejemplo de `env.dart`
 ```dart
-import 'dart:math';
-
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:pictionaty_app/models/movie.dart';
-import 'package:pictionaty_app/models/peliculas_responce.dart';
-
-class MoviesProvider extends ChangeNotifier {
-  final Random _random = Random();
-  final String _apikey = //Clave de la API de The Movie Database;
-  final String _url = 'api.themoviedb.org';
-  final String _language = 'es-ES';
-  List<Movie> _movies = [];
-  Movie _movie = Movie(title: '');
-
-  /*MoviesProvider() {
-    getOnDisplayMovies();
-  }*/
-
-  getOnDisplayMovies(String withGenres) async {
-    var url = Uri.https(_url, '3/movie/popular', {
-      'api_key': _apikey,
-      'language': _language,
-      'page': (_random.nextInt(20) + 1).toString(),
-      'with_genres': withGenres,
-    });
-    final responce = await http.get(url);
-    final popularResponce = PopularResponce.fromJson(responce.body);
-    _movies = popularResponce.results;
-    _movie = _movies[_random.nextInt(_movies.length)];
-    notifyListeners();
-  }
-
-  List<Movie> getPeliculas() {
-    return _movies;
-  }
-
-  Movie getPeliculaActual() {
-    return _movie;
-  }
-
-  recargar() {
-    _movie = _movies[_random.nextInt(_movies.length)];
-    notifyListeners();
-  }
-}
-
-
+String apiKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXX';
 ```

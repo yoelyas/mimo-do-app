@@ -46,4 +46,4 @@ app.*.map.json
 /android/app/release
 
 # Ignorar archivos de entorno o configuración
-/lib/providers/movies_provider.dart
+/const/env.dart
