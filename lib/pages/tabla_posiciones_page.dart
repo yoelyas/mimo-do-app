@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:pictionaty_app/const/theme.dart';
-import 'package:pictionaty_app/pages/home_page.dart';
-import 'package:pictionaty_app/pages/ruleta_generos.dart';
-import 'package:pictionaty_app/providers/equipo_provider.dart';
-import 'package:pictionaty_app/providers/form_provider.dart';
-import 'package:pictionaty_app/providers/movies_provider.dart';
-import 'package:pictionaty_app/providers/state_provider.dart';
-import 'package:pictionaty_app/providers/viewport_provider.dart';
-import 'package:pictionaty_app/widgets/drawer_bar.dart';
-import 'package:pictionaty_app/widgets/main_app_bar.dart';
-import 'package:pictionaty_app/widgets/tablero.dart';
+import 'package:mimo_do/const/theme.dart';
+import 'package:mimo_do/pages/home_page.dart';
+import 'package:mimo_do/pages/ruleta_generos.dart';
+import 'package:mimo_do/providers/equipo_provider.dart';
+import 'package:mimo_do/providers/form_provider.dart';
+import 'package:mimo_do/providers/movies_provider.dart';
+import 'package:mimo_do/providers/state_provider.dart';
+import 'package:mimo_do/providers/viewport_provider.dart';
+import 'package:mimo_do/widgets/drawer_bar.dart';
+import 'package:mimo_do/widgets/main_app_bar.dart';
+import 'package:mimo_do/widgets/tablero.dart';
 import 'package:provider/provider.dart';
 
 class TablaPosicionesPage extends StatelessWidget {

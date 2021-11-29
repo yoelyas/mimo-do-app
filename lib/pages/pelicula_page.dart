@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pictionaty_app/const/theme.dart';
-import 'package:pictionaty_app/models/movie.dart';
-import 'package:pictionaty_app/pages/pregunta_pages.dart';
-import 'package:pictionaty_app/providers/equipo_provider.dart';
-import 'package:pictionaty_app/providers/movies_provider.dart';
-import 'package:pictionaty_app/providers/state_provider.dart';
-import 'package:pictionaty_app/providers/viewport_provider.dart';
-import 'package:pictionaty_app/widgets/main_app_bar.dart';
+import 'package:mimo_do/const/theme.dart';
+import 'package:mimo_do/models/movie.dart';
+import 'package:mimo_do/pages/pregunta_pages.dart';
+import 'package:mimo_do/providers/equipo_provider.dart';
+import 'package:mimo_do/providers/movies_provider.dart';
+import 'package:mimo_do/providers/state_provider.dart';
+import 'package:mimo_do/providers/viewport_provider.dart';
+import 'package:mimo_do/widgets/main_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
@@ -48,8 +48,8 @@ class PeliculaPage extends StatelessWidget {
               height: viewport.getCalcWidth(0.01),
             ),
             Container(
-              width: viewport.getCalcWidth(0.11),
-              height: viewport.getCalcWidth(0.11),
+              width: viewport.getCalcWidth(0.12),
+              height: viewport.getCalcWidth(0.12),
               decoration: BoxDecoration(
                 color: mimodoTheme.primary,
                 borderRadius: BorderRadius.circular(10),
@@ -71,7 +71,7 @@ class PeliculaPage extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  top: viewport.getCalcHeight(0.02),
+                  top: viewport.getCalcHeight(0.01),
                   left: viewport.getCalcWidth(0.04),
                   right: viewport.getCalcWidth(0.04)),
               child: GestureDetector(
@@ -178,12 +178,10 @@ class _PosterState extends State<Poster> {
                     stateProvider.setSoftIsTap(true);
                   });
                 },
-                child: ClipRRect(
-                  child: FadeInImage(
-                      placeholder: const AssetImage('assets/signo.png'),
-                      image: NetworkImage(widget.movie.fullPosterImg),
-                      fit: BoxFit.fill),
-                ),
+                child: FadeInImage(
+                    placeholder: const AssetImage('assets/signo.png'),
+                    image: NetworkImage(widget.movie.fullPosterImg),
+                    fit: BoxFit.fill),
               ),
             ),
           ),

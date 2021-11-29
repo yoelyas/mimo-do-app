@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pictionaty_app/models/teams.dart';
+import 'package:mimo_do/models/teams.dart';
 
 class EquipoProvider extends ChangeNotifier {
   TeamCollection _teamCollection = TeamCollection();
@@ -22,8 +22,8 @@ class EquipoProvider extends ChangeNotifier {
     _teamCollection = TeamCollection();
     _cantEquipos = 2;
     _equipos = {};
-    _tiempoJuego = 1;
-    _rondas = 1;
+    _tiempoJuego = 120;
+    _rondas = 5;
     _generoElejido = '';
     _rondaActual = 0;
   }

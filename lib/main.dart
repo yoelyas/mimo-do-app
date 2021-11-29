@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:pictionaty_app/pages/config_equipos.dart';
-import 'package:pictionaty_app/pages/config_juego.dart';
-import 'package:pictionaty_app/pages/genero_page.dart';
-import 'package:pictionaty_app/pages/home_page.dart';
-import 'package:pictionaty_app/pages/pelicula_page.dart';
-import 'package:pictionaty_app/pages/pregunta_pages.dart';
-import 'package:pictionaty_app/pages/ruleta_generos.dart';
-import 'package:pictionaty_app/pages/tabla_pociciones_page.dart';
-import 'package:pictionaty_app/providers/equipo_provider.dart';
-import 'package:pictionaty_app/providers/movies_provider.dart';
-import 'package:pictionaty_app/providers/viewport_provider.dart';
+import 'package:mimo_do/pages/config_equipos.dart';
+import 'package:mimo_do/pages/config_juego.dart';
+import 'package:mimo_do/pages/genero_page.dart';
+import 'package:mimo_do/pages/home_page.dart';
+import 'package:mimo_do/pages/pelicula_page.dart';
+import 'package:mimo_do/pages/pregunta_pages.dart';
+import 'package:mimo_do/pages/ruleta_generos.dart';
+import 'package:mimo_do/pages/tabla_posiciones_page.dart';
+import 'package:mimo_do/providers/equipo_provider.dart';
+import 'package:mimo_do/providers/movies_provider.dart';
+import 'package:mimo_do/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/form_provider.dart';

@@ -1,6 +1,6 @@
 {
-    "name": "pictionaty_app",
-    "short_name": "pictionaty_app",
+    "name": "mimo_do",
+    "short_name": "mimo_do",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

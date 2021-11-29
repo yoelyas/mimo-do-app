@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:pictionaty_app/models/movie.dart';
+import 'package:mimo_do/models/movie.dart';
 
 class PopularResponce {
   PopularResponce({

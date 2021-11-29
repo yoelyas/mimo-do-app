@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pictionaty_app/const/config.dart';
-import 'package:pictionaty_app/const/theme.dart';
-import 'package:pictionaty_app/pages/home_page.dart';
-import 'package:pictionaty_app/providers/equipo_provider.dart';
-import 'package:pictionaty_app/providers/form_provider.dart';
-import 'package:pictionaty_app/providers/movies_provider.dart';
-import 'package:pictionaty_app/providers/state_provider.dart';
-import 'package:pictionaty_app/providers/viewport_provider.dart';
+import 'package:mimo_do/const/config.dart';
+import 'package:mimo_do/const/theme.dart';
+import 'package:mimo_do/pages/home_page.dart';
+import 'package:mimo_do/providers/equipo_provider.dart';
+import 'package:mimo_do/providers/form_provider.dart';
+import 'package:mimo_do/providers/movies_provider.dart';
+import 'package:mimo_do/providers/state_provider.dart';
+import 'package:mimo_do/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
 
 //menu del costado

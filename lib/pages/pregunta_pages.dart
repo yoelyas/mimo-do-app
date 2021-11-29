@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pictionaty_app/const/theme.dart';
-import 'package:pictionaty_app/pages/tabla_pociciones_page.dart';
-import 'package:pictionaty_app/providers/equipo_provider.dart';
-import 'package:pictionaty_app/providers/movies_provider.dart';
-import 'package:pictionaty_app/providers/viewport_provider.dart';
-import 'package:pictionaty_app/widgets/main_app_bar.dart';
+import 'package:mimo_do/const/theme.dart';
+import 'package:mimo_do/pages/tabla_posiciones_page.dart';
+import 'package:mimo_do/providers/equipo_provider.dart';
+import 'package:mimo_do/providers/movies_provider.dart';
+import 'package:mimo_do/providers/viewport_provider.dart';
+import 'package:mimo_do/widgets/main_app_bar.dart';
 import 'package:provider/provider.dart';
 
 class PreguntaPage extends StatelessWidget {
@@ -94,8 +94,8 @@ class PreguntaPage extends StatelessWidget {
                     width: viewport.getCalcWidth(0.3),
                   ),
                   Container(
-                    width: viewport.getCalcWidth(0.11),
-                    height: viewport.getCalcWidth(0.11),
+                    width: viewport.getCalcWidth(0.12),
+                    height: viewport.getCalcWidth(0.12),
                     decoration: BoxDecoration(
                       color: mimodoTheme.primary,
                       borderRadius: BorderRadius.circular(10),
@@ -125,8 +125,8 @@ class PreguntaPage extends StatelessWidget {
                     width: viewport.getCalcHeight(0.1),
                   ),
                   Container(
-                    width: viewport.getCalcWidth(0.11),
-                    height: viewport.getCalcWidth(0.11),
+                    width: viewport.getCalcWidth(0.12),
+                    height: viewport.getCalcWidth(0.12),
                     decoration: BoxDecoration(
                       color: mimodoTheme.primary,
                       borderRadius: BorderRadius.circular(10),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pictionaty_app/const/config.dart';
-import 'package:pictionaty_app/const/theme.dart';
-import 'package:pictionaty_app/providers/viewport_provider.dart';
+import 'package:mimo_do/const/config.dart';
+import 'package:mimo_do/const/theme.dart';
+import 'package:mimo_do/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
 
 class MimoAppbar {

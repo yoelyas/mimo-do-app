@@ -1,4 +1,4 @@
-# pictionaty_app
+# mimo_do
 
 A new Flutter project.
 

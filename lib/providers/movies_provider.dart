@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pictionaty_app/models/movie.dart';
-import 'package:pictionaty_app/models/peliculas_responce.dart';
-import 'package:pictionaty_app/const/env.dart';
+import 'package:mimo_do/models/movie.dart';
+import 'package:mimo_do/models/peliculas_responce.dart';
+import 'package:mimo_do/const/env.dart';
 
 class MoviesProvider extends ChangeNotifier {
   Random _random = Random();

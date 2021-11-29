@@ -1,6 +1,6 @@
 import 'dart:ui' show Color;
 import 'package:flutter/cupertino.dart';
-import 'package:pictionaty_app/libraries/app_theme.dart';
+import 'package:mimo_do/libraries/app_theme.dart';
 
 final mimodoTheme = AppTheme(
     primary: const Color.fromRGBO(253, 30, 110, 1),
