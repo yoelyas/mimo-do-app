@@ -2,7 +2,7 @@
     package="com.example.mimo_do">
    <application
         android:label="Mimo-do"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
