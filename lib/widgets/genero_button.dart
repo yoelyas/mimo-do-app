@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mimo_do/const/config.dart';
 import 'package:mimo_do/const/theme.dart';
-import 'package:mimo_do/pages/config_equipos.dart';
 import 'package:mimo_do/pages/pelicula_page.dart';
 import 'package:mimo_do/providers/equipo_provider.dart';
 import 'package:mimo_do/providers/movies_provider.dart';

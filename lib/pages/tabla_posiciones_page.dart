@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mimo_do/const/theme.dart';
 import 'package:mimo_do/pages/home_page.dart';
-import 'package:mimo_do/pages/ruleta_generos.dart';
 import 'package:mimo_do/providers/equipo_provider.dart';
 import 'package:mimo_do/providers/form_provider.dart';
 import 'package:mimo_do/providers/movies_provider.dart';

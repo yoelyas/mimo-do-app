@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mimo_do/const/theme.dart';
 import 'package:mimo_do/pages/config_juego.dart';
-import 'package:mimo_do/pages/tabla_posiciones_page.dart';
 import 'package:mimo_do/providers/equipo_provider.dart';
 import 'package:mimo_do/providers/form_provider.dart';
 import 'package:mimo_do/providers/viewport_provider.dart';

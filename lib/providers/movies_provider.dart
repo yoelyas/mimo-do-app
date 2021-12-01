@@ -15,7 +15,7 @@ class MoviesProvider extends ChangeNotifier {
 
   reset() {
     _random = Random();
-    _apikey = '203a2cda19958aea4076c585e27fb780';
+    _apikey = _apikey;
     _url = 'api.themoviedb.org';
     _language = 'es-ES';
     _movies = [];
@@ -52,7 +52,13 @@ class MoviesProvider extends ChangeNotifier {
     return _movies;
   }
 
+  setPeliculaActual() {
+    _movies.remove(_movie);
+    _movie = _movies[_random.nextInt(_movies.length)];
+  }
+
   Movie getPeliculaActual() {
+    _movies.remove(_movie);
     return _movie;
   }
 

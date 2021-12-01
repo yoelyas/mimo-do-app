@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mimo_do/pages/cartelera_page.dart';
 import 'package:mimo_do/pages/config_equipos.dart';
 import 'package:mimo_do/pages/config_juego.dart';
 import 'package:mimo_do/pages/genero_page.dart';
@@ -67,6 +68,7 @@ class MimodoApp extends StatelessWidget {
         'ruleta': (_) => const RuletaDeGeneros(),
         'pelicula': (_) => const PeliculaPage(),
         'pregunta': (_) => const PreguntaPage(),
+        'cartelera': (_) => const CarteleraPage(),
       },
     );
   }

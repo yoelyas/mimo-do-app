@@ -115,7 +115,7 @@ class PreguntaPage extends StatelessWidget {
                         equipoProvider.setPuntosEquipo(equipoProvider
                             .traermeEquipo(equipoProvider.getRondaActual()));
                         equipoProvider.setRondaActual();
-
+                        moviesProvider.setPeliculaActual();
                         Navigator.pushNamed(
                             context, TablaPosicionesPage.routeName);
                       },
@@ -142,6 +142,7 @@ class PreguntaPage extends StatelessWidget {
                       ),
                       onPressed: () {
                         equipoProvider.setRondaActual();
+                        moviesProvider.setPeliculaActual();
                         Navigator.pushNamed(
                             context, TablaPosicionesPage.routeName);
                       },

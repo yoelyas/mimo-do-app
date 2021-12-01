@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mimo_do/const/theme.dart';
 import 'package:mimo_do/providers/viewport_provider.dart';
 import 'package:mimo_do/widgets/drawer_bar.dart';
-
 import 'package:mimo_do/widgets/genero_button.dart';
 import 'package:mimo_do/widgets/main_app_bar.dart';
 import 'package:provider/provider.dart';

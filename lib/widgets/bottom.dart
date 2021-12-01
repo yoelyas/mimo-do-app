@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mimo_do/const/theme.dart';
+import 'package:mimo_do/pages/cartelera_page.dart';
 import 'package:mimo_do/pages/config_equipos.dart';
 import 'package:mimo_do/providers/equipo_provider.dart';
+import 'package:mimo_do/providers/movies_provider.dart';
 import 'package:mimo_do/providers/viewport_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +22,7 @@ class Bottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewport = Provider.of<ViewportProvider>(context);
-
+    final moviesProvider = Provider.of<MoviesProvider>(context);
     final equipoProvider = Provider.of<EquipoProvider>(context);
     return SizedBox(
       width: double.infinity,
@@ -87,6 +89,9 @@ class Bottom extends StatelessWidget {
         ),
         onPressed: () {
           equipoProvider.setModoElejido(text);
+          if (equipoProvider.getModoElejido() == CarteleraPage.routeName) {
+            moviesProvider.getOnNowPlayingMovies();
+          }
           Navigator.pushNamed(context, ConfigEquipos.routeName);
         },
       ),
