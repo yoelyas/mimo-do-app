@@ -38,7 +38,7 @@ class Bottom extends StatelessWidget {
                 fit: BoxFit.fill,
                 image: AssetImage(imagen),
                 height: viewport.getCalcHeight(0.1),
-                width: viewport.getCalcWidth(0.18),
+                width: viewport.getCalcWidth(0.22),
               ),
             ),
             Expanded(child: Container()),

@@ -8,17 +8,17 @@ class MimoAppbar {
   AppBar getWidget(BuildContext context) {
     final viewport = Provider.of<ViewportProvider>(context, listen: false);
     return AppBar(
-      elevation: 20,
+      elevation: 10,
       toolbarHeight: viewport.setContext(context).getAppBarHeight(),
       centerTitle: true,
       title: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Image.asset(APP_CONFIG['appBar']!['logo'],
             fit: BoxFit.contain,
             //el -10 es el margen que quiero que tenga mi logo
-            height: 80)
+            height: 35)
       ]),
       backgroundColor: mimodoTheme.background,
-      shadowColor: mimodoTheme.secondary,
+      shadowColor: mimodoTheme.primary,
       iconTheme: IconThemeData(
         color: mimodoTheme.primary,
       ),

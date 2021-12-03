@@ -31,8 +31,7 @@ class TextBox extends StatelessWidget {
       initialValue: 'Equipo $equipo',
       onChanged: (value) {
         RegExp regExp = RegExp(r'^[\w ]+$');
-        if (value != null &&
-            value.trim().length < 21 &&
+        if (value.trim().length < 21 &&
             value.trim().isNotEmpty &&
             regExp.hasMatch(value)) {
           loginForm.setNombreEquipo(equipo, value);

@@ -7,7 +7,7 @@ class EquipoProvider extends ChangeNotifier {
   int _cantEquipos = 2;
   Map<String, int> _equipos = {};
   int _tiempoJuego = 120;
-  int _rondas = 1;
+  int _rondas = 5;
   String _generoElejido = '';
   int _rondaActual = 0;
   String _modoElejido = '';

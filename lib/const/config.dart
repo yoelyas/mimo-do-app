@@ -3,22 +3,7 @@
 // ignore: constant_identifier_names
 const Map<String, Map<String, dynamic>> APP_CONFIG = {
   "appBar": {
-    "logo": "assets/logo_mimodo.png",
-  },
-  "drawer": {
-    "avatar": "assets/fondo_mimodo.png",
-  },
-  "gridBreakpoints": {
-    "xs": 320.0, //*1
-    "sm": 425.0,
-    "md": 768.0, // *1.2
-    "lg": 1024.0,
-    "xl": 1200.0,
-    //320
-    // <= 425 es smallScreen
-    // <= 768 es mediumScreen
-    // <= 1200 es largeScreen
-    // > 1200 es xLargeScreen
+    "logo": "assets/logo.png",
   },
 };
 

@@ -29,7 +29,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
     final stateProvider = Provider.of<StateProvider>(context);
     final equipoProvider = Provider.of<EquipoProvider>(context);
     final viewport = Provider.of<ViewportProvider>(context);
-    String image = APP_CONFIG['drawer']!['avatar'];
+    String image = APP_CONFIG['appBar']!['logo'];
     return Align(
       alignment: Alignment.topLeft,
       child: SizedBox(
@@ -44,9 +44,14 @@ class _SideBarMenuState extends State<SideBarMenu> {
                 SizedBox(
                   height: viewport.getCalcHeight(0.045),
                 ),
-                Image(
-                  fit: BoxFit.fill,
-                  image: AssetImage(image),
+                Container(
+                  padding: EdgeInsets.all(5),
+                  height: viewport.getCalcHeight(0.08),
+                  width: viewport.getFullWidth() * 0.4,
+                  child: Image(
+                    fit: BoxFit.fill,
+                    image: AssetImage(image),
+                  ),
                 ),
                 SizedBox(
                   height: viewport.getCalcHeight(0.05),
