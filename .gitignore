@@ -47,3 +47,5 @@ app.*.map.json
 
 # Ignorar archivos de entorno o configuración
 /const/env.dart
+
+key.properties

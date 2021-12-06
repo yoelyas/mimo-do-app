@@ -92,7 +92,7 @@ class _ConfigEquiposState extends State<ConfigEquipos> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   )
                 ],

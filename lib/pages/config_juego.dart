@@ -88,9 +88,6 @@ class ConfigJuegoPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      print(equipoProvider.getCantEquipos());
-                      print((equipoProvider.getCantEquipos()));
-
                       equipoProvider
                           .setRonda((equipoProvider.getCantEquipos() % 20));
                       Navigator.pushNamed(

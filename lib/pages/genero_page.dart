@@ -55,7 +55,6 @@ class Buttonsbody extends StatelessWidget {
     };
     List<Widget> buttoms = [];
     List<Widget> result = [];
-
     generos.forEach((key, value) {
       buttoms.add(Padding(
         padding: EdgeInsets.only(
@@ -89,7 +88,6 @@ class Buttonsbody extends StatelessWidget {
         ),
       ));
     }
-
     return Column(
       children: [
         Column(

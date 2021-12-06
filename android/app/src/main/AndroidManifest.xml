@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mimo_do">
+    package="com.mimo_do">
    <application
         android:label="Mimo-do"
         android:icon="@mipmap/launcher_icon">

@@ -45,7 +45,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                   height: viewport.getCalcHeight(0.045),
                 ),
                 Container(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   height: viewport.getCalcHeight(0.08),
                   width: viewport.getFullWidth() * 0.4,
                   child: Image(

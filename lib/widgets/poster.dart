@@ -73,7 +73,7 @@ class _PosterState extends State<Poster> {
             padding: EdgeInsets.only(top: viewport.getCalcHeight(0.05)),
             child: Container(
               decoration: BoxDecoration(
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                       color: Colors.white,
                       offset: Offset(0, 0),

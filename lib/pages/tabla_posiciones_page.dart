@@ -107,7 +107,6 @@ class TablaPosicionesPage extends StatelessWidget {
                       ),
                       onPressed: () {
                         if (equipoProvider.getRonda() > 0) {
-                          print(equipoProvider.getModoElejido());
                           Navigator.pushNamed(
                               context, equipoProvider.getModoElejido());
                         } else {
