@@ -42,7 +42,7 @@ class PreguntaPage extends StatelessWidget {
                         width: viewport.getCalcWidth(0.025),
                         color: Colors.black),
                   ),
-                  width: viewport.getCalcWidth(0.5),
+                  width: viewport.getCalcWidth(0.6),
                   height: viewport.getCalcHeight(0.5),
                   child: GestureDetector(
                     child: ClipRRect(
