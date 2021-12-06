@@ -88,8 +88,11 @@ class ConfigJuegoPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      equipoProvider
-                          .setRonda((equipoProvider.getCantEquipos() % 20));
+                      if (equipoProvider.getModoElejido() ==
+                          CarteleraPage.routeName) {
+                        equipoProvider
+                            .setRonda(18 ~/ equipoProvider.getCantEquipos());
+                      } //
                       Navigator.pushNamed(
                           context, TablaPosicionesPage.routeName);
                     },

@@ -1,4 +1,4 @@
-package com.example.mimo_do
+package com.mimo_do.flutter
 
 import io.flutter.embedding.android.FlutterActivity
 

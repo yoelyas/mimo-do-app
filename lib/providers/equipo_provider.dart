@@ -26,6 +26,7 @@ class EquipoProvider extends ChangeNotifier {
     _rondas = 5;
     _generoElejido = '';
     _rondaActual = 0;
+    _modoElejido = '';
   }
 
   int getRondaActual() => _rondaActual;
@@ -106,7 +107,7 @@ class EquipoProvider extends ChangeNotifier {
     String equipo,
   ) {
     if (_equipos.containsKey(equipo)) {
-      _equipos[equipo] = _equipos[equipo]! + 2;
+      _equipos[equipo] = _equipos[equipo]! + 1;
     }
   }
 
