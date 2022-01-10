@@ -63,7 +63,9 @@ class MoviesProvider extends ChangeNotifier {
   }
 
   recargar() {
-    _movie = _movies[_random.nextInt(_movies.length)];
-    notifyListeners();
+    if (_movies.length > 1) {
+      _movie = _movies[_random.nextInt(_movies.length)];
+      notifyListeners();
+    }
   }
 }
